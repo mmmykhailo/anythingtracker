@@ -7,7 +7,6 @@ import { formatDateString } from "~/lib/dates";
 import { quickAddValuesMap } from "~/lib/entry-quick-add-values";
 import {
   formatStoredValue,
-  displayUnits,
   toDisplayValue,
   toStoredValue,
   getInputStep,
@@ -15,7 +14,7 @@ import {
 import { cn } from "~/lib/utils";
 import { NumberInput } from "~/components/NumberInput";
 
-import type { Tracker } from "~/lib/trackers";
+import { trackerTypesLabels, type Tracker } from "~/lib/trackers";
 import { useRevalidator } from "react-router";
 
 type EntryInputProps = {
@@ -162,7 +161,7 @@ export function EntryInput({
               {formatStoredValue(currentValue, tracker.type)}
               {!!tracker.goal &&
                 ` / ${formatStoredValue(tracker.goal, tracker.type)}`}
-              {displayUnits[tracker.type]}
+              {trackerTypesLabels[tracker.type].shortest}
             </span>
           </div>
 

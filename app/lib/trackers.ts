@@ -5,6 +5,7 @@ export const trackerTypes = [
   "kilograms",
   "none",
   "checkbox",
+  "hours",
 ] as const;
 
 export type TrackerType = (typeof trackerTypes)[number];
@@ -46,6 +47,11 @@ export const trackerTypesLabels: Record<
     shortest: "kg",
     short: "kg",
     long: "Kilograms (kg)",
+  },
+  hours: {
+    shortest: "hr",
+    short: "hr",
+    long: "Hours",
   },
 };
 

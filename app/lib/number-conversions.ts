@@ -1,34 +1,26 @@
-import type { TrackerType } from "./trackers";
+import { trackerTypesLabels, type TrackerType } from "./trackers";
 
 // Define conversion factors for each tracker type
 // Values are stored as the smallest unit to avoid floating point issues
 export const conversionFactors: Record<TrackerType, number> = {
-  liters: 1000,     // Store as milliliters (1L = 1000ml)
+  liters: 1000, // Store as milliliters (1L = 1000ml)
   kilometers: 1000, // Store as meters (1km = 1000m)
-  kilograms: 1000,  // Store as grams (1kg = 1000g)
-  steps: 1,         // Already in smallest unit
-  checkbox: 1,      // Binary value (0 or 1)
-  none: 1000,       // Store with precision (1.0 = 1000)
+  kilograms: 1000, // Store as grams (1kg = 1000g)
+  steps: 1, // Already in smallest unit
+  checkbox: 1, // Binary value (0 or 1)
+  none: 1000, // Store with precision (1.0 = 1000)
+  hours: 60, // Store as minutes (1.0 = 60)
 };
 
 // Define decimal places for display formatting
 export const displayDecimals: Record<TrackerType, number> = {
-  liters: 3,     // Show up to 3 decimal places for liters (e.g., 0.001L)
+  liters: 3, // Show up to 3 decimal places for liters (e.g., 0.001L)
   kilometers: 3, // Show up to 3 decimal places for kilometers (e.g., 0.001km)
-  kilograms: 3,  // Show up to 3 decimal places for kilograms (e.g., 0.001kg)
-  steps: 0,      // No decimals for steps
-  checkbox: 0,   // No decimals for checkbox
-  none: 3,       // Show up to 3 decimal places for generic values
-};
-
-// Define display units
-export const displayUnits: Record<TrackerType, string> = {
-  liters: "L",
-  kilometers: "km",
-  kilograms: "kg",
-  steps: "steps",
-  checkbox: "",
-  none: "",
+  kilograms: 3, // Show up to 3 decimal places for kilograms (e.g., 0.001kg)
+  steps: 0, // No decimals for steps
+  checkbox: 0, // No decimals for checkbox
+  none: 3, // Show up to 3 decimal places for generic values
+  hours: 3, // Show up to 3 decimal places for generic values
 };
 
 /**
@@ -63,7 +55,7 @@ export function toDisplayValue(storedValue: number, type: TrackerType): number {
 export function formatStoredValue(
   storedValue: number,
   type: TrackerType,
-  includeUnit: boolean = false
+  includeUnit: boolean = false,
 ): string {
   const displayValue = toDisplayValue(storedValue, type);
   const decimals = displayDecimals[type];
@@ -79,8 +71,8 @@ export function formatStoredValue(
   }
 
   // Add unit if requested
-  if (includeUnit && displayUnits[type]) {
-    formatted = `${formatted}${displayUnits[type]}`;
+  if (includeUnit && trackerTypesLabels[type].shortest) {
+    formatted = `${formatted}${trackerTypesLabels[type].shortest}`;
   }
 
   return formatted;
