@@ -537,7 +537,7 @@ export default function MonthlyRecap() {
 
       {/* Recap Content */}
       {monthlyStats.length > 0 && (
-        <div className="max-w-2xl mx-auto space-y-6">
+        <div className="max-w-2xl mx-auto space-y-6 select-none">
           {monthlyStats.map((stat, index) => {
             const displayTotal =
               stat.tracker.type === "checkbox"
