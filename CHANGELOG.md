@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.13] - 2026-03-10
+
+### Changes
+
+- add hours tracker type (#76) (73d98dc)
+
+
 ## [1.0.12] - 2026-01-06
 
 ### Changes
