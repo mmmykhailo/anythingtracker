@@ -512,7 +512,7 @@ export default function MonthlyRecap() {
                   <SelectItem key={year} value={year.toString()}>
                     {year}
                   </SelectItem>
-                )
+                ),
               )}
             </SelectContent>
           </Select>
@@ -537,22 +537,23 @@ export default function MonthlyRecap() {
 
       {/* Recap Content */}
       {monthlyStats.length > 0 && (
-        <div className="max-w-2xl mx-auto space-y-6 select-none">
+        <div className="max-w-2xl mx-auto space-y-6">
           {monthlyStats.map((stat, index) => {
             const displayTotal =
               stat.tracker.type === "checkbox"
                 ? stat.daysTracked
-                : formatStoredValue(stat.total, stat.tracker.type);
+                : formatStoredValue(stat.total, stat.tracker.type, true);
             const displayAvg =
               stat.tracker.type === "checkbox"
                 ? "-"
                 : formatStoredValue(
                     Math.round(stat.average),
-                    stat.tracker.type
+                    stat.tracker.type,
+                    true,
                   );
             const displayBest =
               stat.bestDay && stat.tracker.type !== "checkbox"
-                ? formatStoredValue(stat.bestDay.value, stat.tracker.type)
+                ? formatStoredValue(stat.bestDay.value, stat.tracker.type, true)
                 : "-";
 
             return (
@@ -607,7 +608,7 @@ export default function MonthlyRecap() {
                       >
                         {stat.tracker.type === "checkbox"
                           ? "Days Completed"
-                          : "Month total"}
+                          : "This month"}
                       </div>
                     </div>
 
