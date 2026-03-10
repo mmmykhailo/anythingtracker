@@ -1,3 +1,3 @@
 // Setup file for tests - defines build-time variables
-globalThis.__APP_VERSION__ = "1.0.0-test";
-globalThis.__CHANGELOG__ = [];
+(globalThis as any).__APP_VERSION__ = "1.0.0-test";
+(globalThis as any).__CHANGELOG__ = [];
