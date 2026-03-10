@@ -29,6 +29,7 @@ export const quickAddValuesMap: Record<
     label: formatStoredValue(value * conversionFactors.none, "none", true),
     value: value * conversionFactors.none,
   })),
+  // hours are stored internally in minutes
   hours: [30, 60, 120, 180].map((value) => ({
     label: formatStoredValue(value, "hours", true),
     value,
