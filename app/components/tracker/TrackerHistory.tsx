@@ -1,9 +1,9 @@
 import { Clock } from "lucide-react";
 import { useMemo } from "react";
 import { HistoryDateGroup } from "./HistoryDateGroup";
-import type { Tracker } from "~/lib/trackers";
+import { trackerTypesLabels, type Tracker } from "~/lib/trackers";
 import type { HistoryEntry } from "~/lib/history";
-import { toDisplayValue, displayUnits } from "~/lib/number-conversions";
+import { toDisplayValue } from "~/lib/number-conversions";
 import { format, subDays } from "date-fns";
 
 type TrackerHistoryProps = {
@@ -95,7 +95,7 @@ export function TrackerHistory(props: TrackerHistoryProps) {
     };
   }, [history, tracker.type]);
 
-  const unit = displayUnits[tracker.type];
+  const unit = trackerTypesLabels[tracker.type].shortest;
 
   return history.length === 0 ? (
     <div className="text-center py-8">

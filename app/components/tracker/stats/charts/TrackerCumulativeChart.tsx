@@ -13,11 +13,8 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "../../../ui/chart";
-import type { Tracker } from "../../../../lib/trackers";
-import {
-  toDisplayValue,
-  displayUnits,
-} from "../../../../lib/number-conversions";
+import { trackerTypesLabels, type Tracker } from "../../../../lib/trackers";
+import { toDisplayValue } from "../../../../lib/number-conversions";
 import { differenceInDays, format } from "date-fns";
 import { toMidnight } from "~/lib/dates";
 
@@ -168,11 +165,11 @@ export function TrackerCumulativeChart({
         <CardFooter className="flex-col items-start gap-2 text-sm">
           <div className="text-muted-foreground leading-none">
             Total accumulated: {finalValue.toFixed(2)}{" "}
-            {displayUnits[tracker.type]}
+            {trackerTypesLabels[tracker.type].shortest}
           </div>
           <div className="text-muted-foreground leading-none">
             Average daily: {avgDailyIncrease.toFixed(2)}{" "}
-            {displayUnits[tracker.type]}
+            {trackerTypesLabels[tracker.type].shortest}
           </div>
         </CardFooter>
       )}

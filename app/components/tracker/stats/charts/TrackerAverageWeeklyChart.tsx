@@ -15,10 +15,7 @@ import {
   ChartTooltipContent,
 } from "../../../ui/chart";
 import type { Tracker } from "../../../../lib/trackers";
-import {
-  toDisplayValue,
-  displayUnits,
-} from "../../../../lib/number-conversions";
+import { toDisplayValue } from "../../../../lib/number-conversions";
 import { format, startOfWeek, eachDayOfInterval } from "date-fns";
 import { toMidnight } from "~/lib/dates";
 
