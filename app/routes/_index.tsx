@@ -304,13 +304,23 @@ export default function Home() {
                       prefetch="viewport"
                       className="flex-1 min-h-full font-medium p-2 relative transition-colors hover:bg-accent flex flex-col justify-center max-w-full"
                     >
-                      <span
-                        className={clsx("text-xs line-clamp-2 break-words", {
-                          "ml-8": tracker.parentId,
-                        })}
+                      <div
+                        className={clsx(
+                          "flex items-center gap-2 text-xs line-clamp-2 break-words",
+                          {
+                            "ml-8": tracker.parentId,
+                          }
+                        )}
                       >
-                        {tracker.title}
-                      </span>
+                        {tracker.color && (
+                          <span
+                            className="h-2.5 w-2.5 rounded-full shrink-0"
+                            style={{ backgroundColor: tracker.color }}
+                            aria-hidden="true"
+                          />
+                        )}
+                        <span>{tracker.title}</span>
+                      </div>
                     </Link>
                   </div>
                   <div

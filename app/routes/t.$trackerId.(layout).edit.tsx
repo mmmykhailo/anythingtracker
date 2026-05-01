@@ -43,6 +43,7 @@ import {
   toStoredValue,
   getInputStep,
 } from "~/lib/number-conversions";
+import { ColorInput } from "~/components/ui/color-input";
 
 export async function clientLoader({ params }: ClientLoaderFunctionArgs) {
   const trackerId = params.trackerId;
@@ -89,6 +90,7 @@ export async function clientAction({
       const type = formData.get("type") as TrackerType;
       const goalStr = formData.get("goal") as string;
       const isHidden = formData.get("isHidden") === "true";
+      const color = (formData.get("color") as string) || "";
 
       if (!title || !title.trim()) {
         return { error: { title: "Tracker name is required" } };
@@ -106,6 +108,7 @@ export async function clientAction({
         isNumber: type !== "checkbox",
         goal:
           goalStr && parseFloat(goalStr) > 0 ? parseFloat(goalStr) : undefined,
+        color: color.trim() ? color.trim() : undefined,
         isHidden,
       };
 
@@ -137,6 +140,7 @@ interface TrackerFormData {
   title: string;
   type: TrackerType;
   goal?: number;
+  color?: string;
   isHidden: boolean;
 }
 
@@ -148,12 +152,14 @@ export default function TrackerEditPage() {
   const [isCheckboxTypeSelected, setIsCheckboxTypeSelected] = useState(
     tracker.type === "checkbox"
   );
+  const [isColorEnabled, setIsColorEnabled] = useState(Boolean(tracker.color));
 
   const { state, errors, updateField, setFieldError, clearErrors, setState } =
     useFormState<TrackerFormData>({
       title: tracker.title,
       type: tracker.type,
       goal: tracker.goal,
+      color: tracker.color,
       isHidden: tracker.isHidden || false,
     });
 
@@ -308,6 +314,48 @@ export default function TrackerEditPage() {
               />
             </div>
           )}
+
+          <div className="grid items-center gap-3">
+            <Label htmlFor="trackerColor">Tracker color (optional)</Label>
+            <div className="flex items-center gap-3">
+              <Checkbox
+                id="trackerColorEnabled"
+                checked={isColorEnabled}
+                onCheckedChange={(checked) => {
+                  const isEnabled = checked === true;
+                  setIsColorEnabled(isEnabled);
+                  if (isEnabled && !state.color) {
+                    updateField("color", "#3b82f6");
+                  }
+                  if (!isEnabled) {
+                    updateField("color", "");
+                  }
+                }}
+              />
+              <Label
+                htmlFor="trackerColorEnabled"
+                className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+              >
+                Use custom color
+              </Label>
+            </div>
+            <div className="flex items-center gap-3">
+              <ColorInput
+                id="trackerColor"
+                name="color"
+                value={state.color || ""}
+                onChange={(value) => updateField("color", value)}
+                disabled={!isColorEnabled}
+                fallbackColor="#3B82F6"
+                className="w-full"
+              />
+              {/* <div className="text-sm text-muted-foreground">
+                {isColorEnabled && state.color
+                  ? state.color.toUpperCase()
+                  : "No color selected"}
+              </div> */}
+            </div>
+          </div>
 
           <div className="flex items-center gap-3">
             <Checkbox
