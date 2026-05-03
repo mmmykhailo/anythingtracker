@@ -303,11 +303,6 @@ export default function NewTrackerPage() {
                 disabled={!isColorEnabled}
                 fallbackColor="#3B82F6"
               />
-              {/* <div className="text-sm text-muted-foreground">
-                {isColorEnabled && state.color
-                  ? state.color.toUpperCase()
-                  : "No color selected"}
-              </div> */}
             </div>
           </div>
           <div className="grid items-center gap-3">

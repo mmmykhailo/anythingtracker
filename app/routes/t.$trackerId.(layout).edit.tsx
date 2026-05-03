@@ -349,11 +349,6 @@ export default function TrackerEditPage() {
                 fallbackColor="#3B82F6"
                 className="w-full"
               />
-              {/* <div className="text-sm text-muted-foreground">
-                {isColorEnabled && state.color
-                  ? state.color.toUpperCase()
-                  : "No color selected"}
-              </div> */}
             </div>
           </div>
 
