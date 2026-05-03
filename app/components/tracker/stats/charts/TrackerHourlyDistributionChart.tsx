@@ -14,6 +14,7 @@ import {
 } from "~/components/ui/tooltip";
 import { toMidnight } from "~/lib/dates";
 import type { Tracker } from "~/lib/trackers";
+import { formatClockTick, toRadians } from "~/lib/utils";
 
 interface Entry {
   id: string;
@@ -33,10 +34,6 @@ interface TrackerHourlyDistributionChartProps {
 
 const formatHourLabel = (hour: number) =>
   `${hour.toString().padStart(2, "0")}:00`;
-
-const formatClockTick = (value: number) => value.toString().padStart(2, "0");
-
-const toRadians = (deg: number) => (deg * Math.PI) / 180;
 
 const polarToCartesian = (
   cx: number,
