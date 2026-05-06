@@ -7,6 +7,7 @@ import { TrackerTotalWeeklyChart } from "~/components/tracker/stats/charts/Track
 import { TrackerAverageWeeklyChart } from "~/components/tracker/stats/charts/TrackerAverageWeeklyChart";
 import { TrackerCumulativeChart } from "~/components/tracker/stats/charts/TrackerCumulativeChart";
 import { TrackerContributionGraph } from "~/components/tracker/stats/charts/TrackerContributionGraph";
+import { TrackerHourlyDistributionChart } from "~/components/tracker/stats/charts/TrackerHourlyDistributionChart";
 import {
   Card,
   CardDescription,
@@ -243,6 +244,13 @@ export default function TrackerChartsPage() {
         entries={entries}
         fromDate={new Date(fromDate)}
         toDate={new Date(toDate)}
+      />
+
+      <TrackerHourlyDistributionChart 
+        tracker={tracker} 
+        entries={entries}
+        fromDate={new Date(fromDate)}
+        toDate={new Date(toDate)} 
       />
 
       {hasGoal && (
