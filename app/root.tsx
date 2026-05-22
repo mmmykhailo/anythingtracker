@@ -13,6 +13,12 @@ import { usePwaInstall } from "~/lib/hooks/usePwaInstall";
 
 import "./app.css";
 
+const SITE_URL = "https://tracker.mykhailo.net";
+const OG_TITLE = "AnythingTracker - Track Anything, Achieve Everything";
+const OG_DESCRIPTION =
+  "A privacy-first habit and activity tracker. Track water intake, steps, habits, or anything you want. Your data stays on your device with optional encrypted cloud backup.";
+const OG_IMAGE = `${SITE_URL}/og-image.png`;
+
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   {
@@ -36,6 +42,18 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#0a0a0a" />
+        <meta property="og:title" content={OG_TITLE} />
+        <meta property="og:description" content={OG_DESCRIPTION} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={SITE_URL} />
+        <meta property="og:image" content={OG_IMAGE} />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="610" />
+        <meta property="og:image:height" content="610" />
+        <meta
+          property="og:image:alt"
+          content="AnythingTracker preview graphic"
+        />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta
           name="apple-mobile-web-app-status-bar-style"
