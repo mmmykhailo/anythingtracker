@@ -38,6 +38,7 @@ import {
   toStoredValue,
   getInputStep,
 } from "~/lib/number-conversions";
+import { ColorInput } from "~/components/ui/color-input";
 
 export async function clientLoader({ request }: ClientLoaderFunctionArgs) {
   try {
@@ -56,6 +57,7 @@ export async function clientAction({ request }: ClientActionFunctionArgs) {
   const goalStr = formData.get("goal") as string;
   const parentId = formData.get("parentId") as string;
   const isHidden = formData.get("isHidden") === "true";
+  const color = (formData.get("color") as string) || "";
 
   // Validation
   if (!title || !title.trim()) {
@@ -69,6 +71,7 @@ export async function clientAction({ request }: ClientActionFunctionArgs) {
       isNumber: type !== "checkbox",
       ...(goalStr && parseFloat(goalStr) > 0 && { goal: parseFloat(goalStr) }),
       ...(parentId && parentId !== "none" && { parentId }),
+      ...(color.trim() && { color: color.trim() }),
       isHidden,
     };
 
@@ -101,6 +104,7 @@ interface TrackerFormData {
   type: TrackerType;
   goal?: number; // Stored as integer (e.g., milliliters for liters)
   parentId?: string;
+  color?: string;
   isHidden: boolean;
 }
 
@@ -110,6 +114,7 @@ export default function NewTrackerPage() {
   const actionData = useActionData<typeof clientAction>();
   const [isCheckboxTypeSelected, setIsCheckboxTypeSelected] = useState(false);
   const [isTypeDisabled, setIsTypeDisabled] = useState(false);
+  const [isColorEnabled, setIsColorEnabled] = useState(false);
 
   const { state, errors, updateField, setFieldError, clearErrors, setState } =
     useFormState<TrackerFormData>({
@@ -117,6 +122,7 @@ export default function NewTrackerPage() {
       type: "none",
       goal: undefined,
       parentId: undefined,
+      color: undefined,
       isHidden: false,
     });
 
@@ -263,6 +269,42 @@ export default function NewTrackerPage() {
               />
             </div>
           )}
+
+          <div className="grid items-center gap-3">
+            <Label htmlFor="trackerColor">Tracker color (optional)</Label>
+            <div className="flex items-center gap-3">
+              <Checkbox
+                id="trackerColorEnabled"
+                checked={isColorEnabled}
+                onCheckedChange={(checked) => {
+                  const isEnabled = checked === true;
+                  setIsColorEnabled(isEnabled);
+                  if (isEnabled && !state.color) {
+                    updateField("color", "#3b82f6");
+                  }
+                  if (!isEnabled) {
+                    updateField("color", "");
+                  }
+                }}
+              />
+              <Label
+                htmlFor="trackerColorEnabled"
+                className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+              >
+                Use custom color
+              </Label>
+            </div>
+            <div className="flex items-center gap-3">
+              <ColorInput
+                id="trackerColor"
+                name="color"
+                value={state.color || ""}
+                onChange={(value) => updateField("color", value)}
+                disabled={!isColorEnabled}
+                fallbackColor="#3B82F6"
+              />
+            </div>
+          </div>
           <div className="grid items-center gap-3">
             <Label htmlFor="parentTracker">Parent tracker (optional)</Label>
             <Select

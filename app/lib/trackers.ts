@@ -60,6 +60,7 @@ export type Tracker = {
   title: string;
   type: TrackerType;
   isNumber: boolean;
+  color?: string;
   values: {
     [dateString: string]: number;
   };
