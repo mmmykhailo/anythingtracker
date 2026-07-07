@@ -479,7 +479,7 @@ export default function MonthlyRecap() {
         <div className="flex items-center justify-between mb-2 gap-2">
           <Link
             to="/"
-            className="p-2 hover:bg-zinc-800 rounded-lg transition-colors"
+            className="p-2 hover:bg-white/10 rounded-none transition-colors"
           >
             <ChevronLeft className="w-6 h-6" />
           </Link>
@@ -578,7 +578,7 @@ export default function MonthlyRecap() {
                     {/* Month indicator */}
                     <div
                       className={cn(
-                        "bg-black/30 rounded-lg px-3 py-1 text-sm font-medium shrink-0",
+                        "bg-black/30 rounded-none px-3 py-1 text-sm font-medium shrink-0",
                         themeObject.card,
                         themeObject.date
                       )}

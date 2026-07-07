@@ -355,7 +355,7 @@ export default function GitHubSyncSettingsPage() {
             </Button>
           </div>
 
-          <div className="mt-4 p-4 bg-yellow-50 dark:bg-yellow-950/20 rounded-lg border border-yellow-200 dark:border-yellow-900">
+          <div className="mt-4 p-4 bg-yellow-50 dark:bg-yellow-950/20 rounded-none border border-yellow-200 dark:border-yellow-900">
             <div className="text-sm text-yellow-800 dark:text-yellow-200">
               <strong>Privacy Note:</strong> Your GitHub token is stored locally
               in your browser and never sent to any server except GitHub's API.

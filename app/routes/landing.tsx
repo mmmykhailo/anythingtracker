@@ -269,7 +269,7 @@ export default function LandingPage() {
             <img
               src="/screenshots/screenshot-tracker-list.png"
               alt="Tracker list screenshot"
-              className="rounded-lg border-2 border-primary/30"
+              className="rounded-none border-2 border-primary/30"
             />
           </div>
 
@@ -280,7 +280,7 @@ export default function LandingPage() {
             <img
               src="/screenshots/screenshot-entry-logging.png"
               alt="Entry logging screenshot"
-              className="rounded-lg border-2 border-primary/30"
+              className="rounded-none border-2 border-primary/30"
             />
           </div>
 
@@ -292,7 +292,7 @@ export default function LandingPage() {
             <img
               src="/screenshots/screenshot-stats.png"
               alt="Statistics screenshot"
-              className="rounded-lg border-2 border-primary/30"
+              className="rounded-none border-2 border-primary/30"
             />
           </div>
 
@@ -304,7 +304,7 @@ export default function LandingPage() {
             <img
               src="/screenshots/screenshot-recap.png"
               alt="Monthly recap screenshot"
-              className="rounded-lg border-2 border-primary/30"
+              className="rounded-none border-2 border-primary/30"
             />
           </div>
         </div>

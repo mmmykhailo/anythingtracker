@@ -4,7 +4,9 @@
       "Bash(dir:*)",
       "Bash(bun run typecheck:*)",
       "Bash(bun test:*)",
-      "Bash(gh project *)"
+      "Bash(gh project *)",
+      "Bash(bun run *)",
+      "Bash(gh issue *)"
     ],
     "deny": [],
     "ask": []
