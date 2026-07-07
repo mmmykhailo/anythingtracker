@@ -11,6 +11,7 @@ import type { Route } from "./+types/root";
 import { SyncProvider } from "~/components/SyncProvider";
 import { usePwaInstall } from "~/lib/hooks/usePwaInstall";
 
+import "@fontsource-variable/jetbrains-mono";
 import "./app.css";
 
 const SITE_URL = "https://tracker.mykhailo.net";
@@ -20,16 +21,6 @@ const OG_DESCRIPTION =
 const OG_IMAGE = `${SITE_URL}/og-image.png`;
 
 export const links: Route.LinksFunction = () => [
-  { rel: "preconnect", href: "https://fonts.googleapis.com" },
-  {
-    rel: "preconnect",
-    href: "https://fonts.gstatic.com",
-    crossOrigin: "anonymous",
-  },
-  {
-    rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
-  },
   { rel: "manifest", href: "/manifest.json" },
   { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
   { rel: "apple-touch-icon", href: "/icons/icon-192x192.png" },
