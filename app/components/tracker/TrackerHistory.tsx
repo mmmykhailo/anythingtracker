@@ -99,8 +99,8 @@ export function TrackerHistory(props: TrackerHistoryProps) {
 
   return history.length === 0 ? (
     <div className="text-center py-8">
-      <Clock className="h-8 w-8 mx-auto mb-2 text-gray-400" />
-      <p className="text-gray-600 dark:text-gray-400 text-sm">
+      <Clock className="h-8 w-8 mx-auto mb-2 text-muted-foreground" />
+      <p className="text-muted-foreground text-sm">
         No entries yet. Start tracking to see your history here.
       </p>
     </div>
@@ -108,7 +108,7 @@ export function TrackerHistory(props: TrackerHistoryProps) {
     <div className="space-y-4">
       {/* Period Totals */}
       {!withoutStats && (
-        <div className="grid grid-cols-3 gap-3 p-4 bg-gradient-to-br from-muted/30 to-muted/60 rounded-xl border border-border/50">
+        <div className="grid grid-cols-3 gap-3 p-4 bg-muted/40 ring-1 ring-foreground/10 rounded-none">
           <div className="text-center space-y-1">
             <p className="text-[10px] uppercase tracking-wider text-muted-foreground/70 font-medium">
               7 days

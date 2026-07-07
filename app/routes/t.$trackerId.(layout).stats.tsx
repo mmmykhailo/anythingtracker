@@ -131,14 +131,8 @@ export function meta() {
 }
 
 export default function TrackerChartsPage() {
-  const {
-    tracker,
-    entries,
-    stats,
-    selectedValue,
-    fromDate,
-    toDate,
-  } = useLoaderData<typeof clientLoader>();
+  const { tracker, entries, stats, selectedValue, fromDate, toDate } =
+    useLoaderData<typeof clientLoader>();
   const revalidator = useRevalidator();
   const navigate = useNavigate();
 
@@ -159,7 +153,7 @@ export default function TrackerChartsPage() {
   if (!tracker) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="text-red-600">Tracker not found</div>
+        <div className="text-destructive">Tracker not found</div>
       </div>
     );
   }
@@ -186,7 +180,6 @@ export default function TrackerChartsPage() {
 
   return (
     <div className="grid gap-4">
-      <div className="fixed z-50 select-none pointer-events-none top-0 left-0 right-0 h-5 bg-linear-to-b from-black/80 to-black/0" />
       <div className="flex justify-end">
         <PeriodSelector
           selectedValue={selectedValue}
@@ -246,11 +239,11 @@ export default function TrackerChartsPage() {
         toDate={new Date(toDate)}
       />
 
-      <TrackerHourlyDistributionChart 
-        tracker={tracker} 
+      <TrackerHourlyDistributionChart
+        tracker={tracker}
         entries={entries}
         fromDate={new Date(fromDate)}
-        toDate={new Date(toDate)} 
+        toDate={new Date(toDate)}
       />
 
       {hasGoal && (

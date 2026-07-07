@@ -200,7 +200,7 @@ export default function TrackerEditPage() {
   if (!tracker) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="text-red-600">Tracker not found</div>
+        <div className="text-destructive">Tracker not found</div>
       </div>
     );
   }
@@ -209,7 +209,6 @@ export default function TrackerEditPage() {
 
   return (
     <div>
-      <div className="fixed z-50 select-none pointer-events-none top-0 left-0 right-0 h-5 bg-linear-to-b from-black/80 to-black/0" />
       <Form method="post">
         <input type="hidden" name="intent" value="update" />
         <input type="hidden" name="type" value={state.type} />
@@ -235,7 +234,7 @@ export default function TrackerEditPage() {
               onChange={(e) => updateField("title", e.target.value)}
             />
             {errors.title && (
-              <div className="text-red-600 text-sm">{errors.title}</div>
+              <div className="text-destructive text-sm">{errors.title}</div>
             )}
           </div>
 
@@ -276,12 +275,12 @@ export default function TrackerEditPage() {
               </div>
             )}
             {!canChangeType && tracker.parentId && (
-              <div className="text-blue-600 text-sm">
+              <div className="text-primary text-sm">
                 Cannot change type because this tracker has a parent tracker
               </div>
             )}
             {errors.type && (
-              <div className="text-red-600 text-sm">{errors.type}</div>
+              <div className="text-destructive text-sm">{errors.type}</div>
             )}
           </div>
 

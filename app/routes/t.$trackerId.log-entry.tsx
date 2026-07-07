@@ -198,15 +198,13 @@ export default function LogEntryPage() {
   if (!tracker) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="text-red-600">Tracker not found</div>
+        <div className="text-destructive">Tracker not found</div>
       </div>
     );
   }
 
   return (
     <div className="grid gap-8">
-      <div className="fixed z-50 select-none pointer-events-none top-0 left-0 right-0 h-5 bg-linear-to-b from-black/80 to-black/0" />
-
       <TrackerHeader
         trackerTitle={tracker.title}
         selectedDate={selectedDate}

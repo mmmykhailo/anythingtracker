@@ -181,11 +181,11 @@ export async function clientLoader({ request }: Route.ClientLoaderArgs) {
       average: periodStats.average ?? 0,
       bestDay: periodStats.bestDay ?? null,
       longestStreak: hasGoal
-        ? (streakStats.longestGoalStreak ?? 0)
-        : (streakStats.longestStreak ?? 0),
+        ? streakStats.longestGoalStreak ?? 0
+        : streakStats.longestStreak ?? 0,
       currentStreak: hasGoal
-        ? (streakStats.currentGoalStreak ?? 0)
-        : (streakStats.currentStreak ?? 0),
+        ? streakStats.currentGoalStreak ?? 0
+        : streakStats.currentStreak ?? 0,
       entries,
     });
   }
@@ -474,7 +474,6 @@ export default function MonthlyRecap() {
 
   return (
     <div className="min-h-screen bg-zinc-950 text-white py-4 pb-8">
-      <div className="fixed z-50 select-none pointer-events-none top-0 left-0 right-0 h-5 bg-linear-to-b from-black/80 to-black/0" />
       {/* Header */}
       <div className="max-w-2xl mx-auto mb-4">
         <div className="flex items-center justify-between mb-2 gap-2">
@@ -512,7 +511,7 @@ export default function MonthlyRecap() {
                   <SelectItem key={year} value={year.toString()}>
                     {year}
                   </SelectItem>
-                ),
+                )
               )}
             </SelectContent>
           </Select>
@@ -549,7 +548,7 @@ export default function MonthlyRecap() {
                 : formatStoredValue(
                     Math.round(stat.average),
                     stat.tracker.type,
-                    true,
+                    true
                   );
             const displayBest =
               stat.bestDay && stat.tracker.type !== "checkbox"

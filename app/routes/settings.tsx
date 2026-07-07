@@ -180,10 +180,10 @@ export default function SettingsPage() {
     if (syncConfigured) {
       return {
         text: "Configured",
-        color: "text-green-600 dark:text-green-400",
+        color: "text-accent",
       };
     }
-    return { text: "Not configured", color: "text-gray-500" };
+    return { text: "Not configured", color: "text-muted-foreground" };
   };
 
   const gitHubStatus = getGitHubSyncStatus();
@@ -199,7 +199,6 @@ export default function SettingsPage() {
 
   return (
     <div>
-      <div className="fixed z-50 select-none pointer-events-none top-0 left-0 right-0 h-5 bg-linear-to-b from-black/80 to-black/0" />
       <div className="w-full h-16 flex items-center justify-between">
         <div className="flex gap-4 items-center">
           <Button asChild variant="ghost" size="icon">
@@ -231,7 +230,7 @@ export default function SettingsPage() {
               >
                 {exportSuccess ? (
                   <>
-                    <CheckCircle2 className="h-4 w-4 mr-2 text-green-600 dark:text-green-400" />
+                    <CheckCircle2 className="h-4 w-4 mr-2 text-accent" />
                     Exported
                   </>
                 ) : (
@@ -263,7 +262,7 @@ export default function SettingsPage() {
               >
                 {importSuccess ? (
                   <>
-                    <CheckCircle2 className="h-4 w-4 mr-2 text-green-600 dark:text-green-400" />
+                    <CheckCircle2 className="h-4 w-4 mr-2 text-accent" />
                     Imported
                   </>
                 ) : (
@@ -310,8 +309,8 @@ export default function SettingsPage() {
                   <span
                     className={`text-sm font-medium ${
                       encryptionEnabled
-                        ? "text-green-600 dark:text-green-400"
-                        : "text-gray-500"
+                        ? "text-accent"
+                        : "text-muted-foreground"
                     }`}
                   >
                     {encryptionEnabled ? "Enabled" : "Disabled"}

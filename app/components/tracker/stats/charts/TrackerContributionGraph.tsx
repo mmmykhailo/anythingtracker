@@ -39,15 +39,15 @@ const colorClassNamesNoGoal = [
   "bg-emerald-400 dark:bg-emerald-500/80",
   "bg-emerald-300 dark:bg-emerald-500/50",
   "bg-emerald-200 dark:bg-emerald-700/50",
-  "bg-accent",
+  "bg-muted",
 ];
 
 const colorClassNamesGoal = [
   "bg-emerald-500/90",
-  "bg-zinc-500",
-  "bg-zinc-400 dark:bg-zinc-600",
-  "bg-zinc-300 dark:bg-zinc-700",
-  "bg-accent",
+  "bg-foreground/50",
+  "bg-foreground/30",
+  "bg-foreground/15",
+  "bg-muted",
 ];
 
 const getContributionColorClassName = (

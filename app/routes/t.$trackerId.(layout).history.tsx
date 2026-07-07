@@ -113,14 +113,13 @@ export default function TrackerHistoryPage() {
   if (!tracker) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="text-red-600">Tracker not found</div>
+        <div className="text-destructive">Tracker not found</div>
       </div>
     );
   }
 
   return (
     <>
-      <div className="fixed z-50 select-none pointer-events-none top-0 left-0 right-0 h-5 bg-linear-to-b from-black/80 to-black/0" />
       <TrackerHistory
         history={history}
         tracker={tracker}

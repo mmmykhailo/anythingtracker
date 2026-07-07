@@ -27,7 +27,7 @@ export function SyncButton() {
   const getIcon = () => {
     // Show spinning icon when revalidating data
     if (isRevalidating) {
-      return <RefreshCw className="h-4 w-4 animate-spin text-blue-500" />;
+      return <RefreshCw className="h-4 w-4 animate-spin text-muted-foreground" />;
     }
 
     switch (syncState.status) {
@@ -38,13 +38,13 @@ export function SyncButton() {
         // Show success icon if we have a recent sync
         if (syncState.lastSyncTime) {
           return (
-            <CloudCheck className="h-4 w-4 text-green-600 dark:text-green-400" />
+            <CloudCheck className="h-4 w-4 text-accent" />
           );
         }
         return <RefreshCw className="h-4 w-4" />;
       case "error":
         return (
-          <AlertCircle className="h-4 w-4 text-red-600 dark:text-red-400" />
+          <AlertCircle className="h-4 w-4 text-destructive" />
         );
       default:
         return <RefreshCw className="h-4 w-4" />;

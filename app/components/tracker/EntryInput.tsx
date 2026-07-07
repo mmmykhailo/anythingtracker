@@ -80,7 +80,7 @@ export function EntryInput({
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="text-sm text-gray-600 dark:text-gray-400">
+      <div className="text-sm text-muted-foreground">
         {isToday
           ? "Today"
           : `${new Date(selectedDate).toLocaleDateString("en", {
@@ -155,7 +155,7 @@ export function EntryInput({
             Current:{" "}
             <span
               className={cn("text-xl font-semibold", {
-                "text-green-600": tracker.goal && currentValue >= tracker.goal,
+                "text-accent": tracker.goal && currentValue >= tracker.goal,
               })}
             >
               {formatStoredValue(currentValue, tracker.type)}

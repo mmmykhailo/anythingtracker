@@ -29,7 +29,7 @@ export function TrackerHeader({
           type="date"
           value={selectedDate}
           onChange={(e) => onDateChange(e.target.value)}
-          className="bg-transparent border border-gray-300 dark:border-gray-600 rounded px-2 py-1 text-sm"
+          className="bg-transparent border border-input rounded px-2 py-1 text-sm"
         />
       </div>
     </div>

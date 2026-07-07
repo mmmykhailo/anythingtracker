@@ -157,7 +157,6 @@ export default function NewTrackerPage() {
 
   return (
     <div>
-      <div className="fixed z-50 select-none pointer-events-none top-0 left-0 right-0 h-5 bg-gradient-to-b from-black to-black/0" />
       <Form method="post">
         <div className="w-full h-16 flex items-center justify-between">
           <div className="flex gap-4 items-center">
@@ -201,7 +200,7 @@ export default function NewTrackerPage() {
               onChange={(e) => updateField("title", e.target.value)}
             />
             {errors.title && (
-              <div className="text-red-600 text-sm">{errors.title}</div>
+              <div className="text-destructive text-sm">{errors.title}</div>
             )}
           </div>
           <div className="grid items-center gap-3">
@@ -232,12 +231,12 @@ export default function NewTrackerPage() {
               </SelectContent>
             </Select>
             {isTypeDisabled && (
-              <div className="text-blue-600 text-sm">
+              <div className="text-primary text-sm">
                 Measurement unit automatically set to match parent tracker
               </div>
             )}
             {errors.type && (
-              <div className="text-red-600 text-sm">{errors.type}</div>
+              <div className="text-destructive text-sm">{errors.type}</div>
             )}
           </div>
           {!isCheckboxTypeSelected && (
@@ -298,10 +297,10 @@ export default function NewTrackerPage() {
               </SelectContent>
             </Select>
             {errors.parentId && (
-              <div className="text-red-600 text-sm">{errors.parentId}</div>
+              <div className="text-destructive text-sm">{errors.parentId}</div>
             )}
             {state.parentId && (
-              <div className="text-gray-600 text-sm">
+              <div className="text-muted-foreground text-sm">
                 Values added to this tracker will automatically be added to{" "}
                 {trackers.find((t) => t.id === state.parentId)?.title}
               </div>

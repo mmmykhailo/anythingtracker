@@ -60,19 +60,19 @@ export function HistoryDateGroup({
 
   return (
     <div className="space-y-2">
-      <div className="flex items-center justify-between text-sm font-medium text-gray-700 dark:text-gray-300 pb-1">
+      <div className="flex items-center justify-between text-sm font-medium text-foreground pb-1">
         <div className="flex items-center gap-2">
           <Calendar className="h-3 w-3" />
           <span>{isToday ? "Today" : formatDate(date)}</span>
-          <span className="text-xs text-gray-500">
+          <span className="text-xs text-muted-foreground">
             ({entries.length} {entries.length === 1 ? "entry" : "entries"})
           </span>
         </div>
         <div className="flex items-center gap-2">
-          <span className="text-xs text-gray-500">Total:</span>
+          <span className="text-xs text-muted-foreground">Total:</span>
           <span
             className={cn("font-semibold", {
-              "text-green-600": tracker.goal && totalValue >= tracker.goal,
+              "text-accent": tracker.goal && totalValue >= tracker.goal,
             })}
           >
             {tracker.type === "checkbox"
@@ -88,7 +88,7 @@ export function HistoryDateGroup({
         </div>
       </div>
 
-      <div className="border rounded-2xl overflow-hidden">
+      <div className="ring-1 ring-foreground/10 overflow-hidden rounded-none">
         <Table className="table-fixed">
           <TableBody>
             {entries.map((entry) => (
@@ -101,7 +101,7 @@ export function HistoryDateGroup({
                 {/*<TableCell className="text-xs text-gray-500">
                   {formatTime(entry.createdAt)}
                 </TableCell>*/}
-                <TableCell className="text-sm text-gray-600 dark:text-gray-400">
+                <TableCell className="text-sm text-muted-foreground">
                   {entry.comment && (
                     <Tooltip>
                       <TooltipTrigger asChild>
@@ -121,7 +121,7 @@ export function HistoryDateGroup({
                     size="sm"
                     onClick={() => onDeleteEntry(entry.id)}
                     disabled={deletingEntryId === entry.id || entryLoading}
-                    className="text-red-600 hover:text-red-700 hover:bg-red-50 p-1 h-auto"
+                    className="text-destructive hover:text-destructive hover:bg-destructive/10 p-1 h-auto"
                   >
                     <Trash2 className="h-3 w-3" />
                   </Button>

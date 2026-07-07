@@ -58,7 +58,7 @@ export function EncryptionMigrationInfo({
                   If you lose your token, you won't be able to decrypt your data
                 </li>
               </ul>
-              <p className="text-green-600 dark:text-green-400">
+              <p className="text-accent">
                 <Shield className="inline h-3 w-3 mr-1" />
                 Your data will be protected with AES-256-GCM encryption.
               </p>

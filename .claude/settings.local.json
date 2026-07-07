@@ -3,7 +3,8 @@
     "allow": [
       "Bash(dir:*)",
       "Bash(bun run typecheck:*)",
-      "Bash(bun test:*)"
+      "Bash(bun test:*)",
+      "Bash(gh project *)"
     ],
     "deny": [],
     "ask": []

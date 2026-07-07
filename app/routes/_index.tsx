@@ -181,7 +181,6 @@ export default function Home() {
 
   return (
     <div>
-      <div className="fixed z-50 select-none pointer-events-none top-0 left-0 right-0 h-6 bg-linear-to-b from-black/80 to-black/0" />
       <div className="w-full h-16 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <Button asChild variant="ghost" size="icon">
@@ -247,7 +246,7 @@ export default function Home() {
                     <div
                       key={dateString}
                       className={clsx("py-1", {
-                        "text-blue-500 font-bold": isTodayDate,
+                        "text-accent font-bold": isTodayDate,
                       })}
                     >
                       <div>{weekday}</div>
@@ -289,7 +288,7 @@ export default function Home() {
                               ? "Collapse"
                               : "Expand"
                           }
-                          className="w-full h-full cursor-pointer transition-colors hover:bg-accent flex items-center justify-center"
+                          className="w-full h-full cursor-pointer transition-colors hover:bg-muted flex items-center justify-center"
                         >
                           {expandedTrackers.has(tracker.id) ? (
                             <ChevronDown className="h-4 w-4" />
@@ -302,7 +301,7 @@ export default function Home() {
                     <Link
                       to={`/t/${tracker.id}/history`}
                       prefetch="viewport"
-                      className="flex-1 min-h-full font-medium p-2 relative transition-colors hover:bg-accent flex flex-col justify-center max-w-full"
+                      className="flex-1 min-h-full font-medium p-2 relative transition-colors hover:bg-muted flex flex-col justify-center max-w-full"
                     >
                       <span
                         className={clsx("text-xs line-clamp-2 break-words", {
@@ -325,12 +324,12 @@ export default function Home() {
                       return (
                         <div
                           className={clsx(
-                            "text-center flex flex-col justify-center leading-none gap-1 p-2 relative transition-colors hover:bg-accent",
+                            "text-center flex flex-col justify-center leading-none gap-1 p-2 relative transition-colors hover:bg-muted",
                             {
                               "opacity-50": value === 0,
-                              "text-zinc-400":
+                              "text-muted-foreground":
                                 tracker.goal && value < tracker.goal,
-                              "text-green-600":
+                              "text-accent":
                                 tracker.goal && value >= tracker.goal,
                             }
                           )}
