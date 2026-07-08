@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.14] - 2026-07-08
+
+### Changes
+
+- replace confirm() with inline delete confirmation on edit page (c4f21d3)
+- use short variant of type label on entry input (60d49d4)
+- navigate to tracker detail page after save (5ff8ecd)
+- add aria-labels to icon-only header buttons (f2e5d05)
+- fix home page not updating after drawer entry changes (c19860a)
+- fix tracker types labels (ce8d194)
+- fix save button label (e499b9a)
+- convert log-entry into a bottom/side drawer (#104) (9bf8885)
+- use user-friendly tracker type display names (24a88b0)
+- replace lucide-react with phosphor Icons (3bb5246)
+- adopt sharp corners in missed places (fb62129)
+- update font to jetbrains mono (2427a16)
+- redesign the app to make it look more similar to for of walk (42b8eb7)
+- add Open Graph metadata and preview image (#79) (7526a3e)
+- add hourly distribution chart (#78) (3683ae1)
+
+
 ## [1.0.13] - 2026-03-10
 
 ### Changes
