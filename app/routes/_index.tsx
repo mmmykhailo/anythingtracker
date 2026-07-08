@@ -3,6 +3,7 @@ import { ChartBar, Check, CaretDown, CaretLeft, CaretRight, Tree, Plus, Gear } f
 import { useState, useEffect } from "react";
 import { Link, redirect, useLoaderData } from "react-router";
 import { LogEntryDrawer } from "~/components/LogEntryDrawer";
+import { useLogEntryDrawer } from "~/lib/hooks/useLogEntryDrawer";
 import { Button } from "~/components/ui/button";
 import { Separator } from "~/components/ui/separator";
 import { formatDateForDisplay, getDaysArray, isDateToday } from "~/lib/dates";
@@ -68,21 +69,7 @@ export default function Home() {
   const [expandedTrackers, setExpandedTrackers] = useState<Set<string>>(
     () => new Set(savedExpandedTrackers)
   );
-  const [drawerState, setDrawerState] = useState<{
-    open: boolean;
-    trackerId: string;
-    date: string;
-  }>({ open: false, trackerId: "", date: "" });
-
-  const openDrawer = (trackerId: string, date: string) => {
-    setDrawerState({ open: true, trackerId, date });
-    window.history.pushState(null, "", `/t/${trackerId}/log-entry?date=${date}`);
-  };
-
-  const closeDrawer = () => {
-    setDrawerState((prev) => ({ ...prev, open: false }));
-    window.history.replaceState(null, "", "/");
-  };
+  const { state: logEntryDrawer, openLogEntry, closeLogEntry } = useLogEntryDrawer("/");
 
   // TODO: Investigate why this is necessary
   useEffect(() => {
@@ -362,7 +349,7 @@ export default function Home() {
                             )}
                           <button
                             type="button"
-                            onClick={() => openDrawer(tracker.id, dateString)}
+                            onClick={() => openLogEntry(tracker.id, dateString)}
                             className="absolute inset-0 cursor-pointer"
                             aria-label={`Log entry for ${tracker.title}`}
                           />
@@ -387,12 +374,12 @@ export default function Home() {
         </div>
       )}
 
-      {drawerState.trackerId && (
+      {logEntryDrawer.trackerId && (
         <LogEntryDrawer
-          open={drawerState.open}
-          onClose={closeDrawer}
-          trackerId={drawerState.trackerId}
-          date={drawerState.date}
+          open={logEntryDrawer.open}
+          onClose={closeLogEntry}
+          trackerId={logEntryDrawer.trackerId}
+          date={logEntryDrawer.date}
         />
       )}
     </div>

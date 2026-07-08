@@ -1,5 +1,4 @@
 import { CaretLeft } from "@phosphor-icons/react";
-import { useState } from "react";
 import {
   Link,
   Outlet,
@@ -12,6 +11,7 @@ import TabsNavigation from "~/components/ui/tabs-navigation";
 import { LogEntryDrawer } from "~/components/LogEntryDrawer";
 import { getTrackerById } from "~/lib/db";
 import { formatDateString } from "~/lib/dates";
+import { useLogEntryDrawer } from "~/lib/hooks/useLogEntryDrawer";
 
 export async function clientLoader({ params }: ClientLoaderFunctionArgs) {
   const trackerId = params.trackerId;
@@ -33,17 +33,9 @@ export async function clientLoader({ params }: ClientLoaderFunctionArgs) {
 export default function TrackerPageLayout() {
   const { trackerId } = useParams();
   const { tracker } = useLoaderData<typeof clientLoader>();
-  const [drawerOpen, setDrawerOpen] = useState(false);
-
-  const openDrawer = () => {
-    setDrawerOpen(true);
-    window.history.pushState(null, "", `/t/${trackerId}/log-entry`);
-  };
-
-  const closeDrawer = () => {
-    setDrawerOpen(false);
-    window.history.replaceState(null, "", `/t/${trackerId}/history`);
-  };
+  const { state: logEntryDrawer, openLogEntry, closeLogEntry } = useLogEntryDrawer(
+    () => `/t/${trackerId}/history`
+  );
 
   return (
     <>
@@ -56,7 +48,7 @@ export default function TrackerPageLayout() {
           </Button>
           <span className="font-medium">{tracker.title}</span>
         </div>
-        <Button variant="secondary" onClick={openDrawer}>
+        <Button variant="secondary" onClick={() => openLogEntry(trackerId!, formatDateString(new Date()))}>
           Log new entry
         </Button>
       </div>
@@ -79,12 +71,12 @@ export default function TrackerPageLayout() {
       />
       <Outlet />
 
-      {trackerId && (
+      {logEntryDrawer.trackerId && (
         <LogEntryDrawer
-          open={drawerOpen}
-          onClose={closeDrawer}
-          trackerId={trackerId}
-          date={formatDateString(new Date())}
+          open={logEntryDrawer.open}
+          onClose={closeLogEntry}
+          trackerId={logEntryDrawer.trackerId}
+          date={logEntryDrawer.date}
         />
       )}
     </>
