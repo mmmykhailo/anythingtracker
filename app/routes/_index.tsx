@@ -1,7 +1,7 @@
 import { addDays, format } from "date-fns";
 import { ChartBar, Check, CaretDown, CaretLeft, CaretRight, Tree, Plus, Gear } from "@phosphor-icons/react";
 import { useState, useEffect } from "react";
-import { Link, redirect, useLoaderData } from "react-router";
+import { Link, redirect, useLoaderData, useLocation, useNavigate } from "react-router";
 import { LogEntryDrawer } from "~/components/LogEntryDrawer";
 import { useLogEntryDrawer } from "~/lib/hooks/useLogEntryDrawer";
 import { Button } from "~/components/ui/button";
@@ -70,6 +70,17 @@ export default function Home() {
     () => new Set(savedExpandedTrackers)
   );
   const { state: logEntryDrawer, openLogEntry, closeLogEntry } = useLogEntryDrawer("/");
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const pending = (location.state as { openLogEntry?: { trackerId: string; date: string } } | null)
+      ?.openLogEntry;
+    if (pending) {
+      openLogEntry(pending.trackerId, pending.date);
+      navigate(".", { replace: true, state: {} });
+    }
+  }, []);
 
   // TODO: Investigate why this is necessary
   useEffect(() => {
