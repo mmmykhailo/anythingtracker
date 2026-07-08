@@ -1,7 +1,9 @@
 import { addDays, format } from "date-fns";
 import { ChartBar, Check, CaretDown, CaretLeft, CaretRight, Tree, Plus, Gear } from "@phosphor-icons/react";
 import { useState, useEffect } from "react";
-import { Link, redirect, useLoaderData } from "react-router";
+import { Link, redirect, useLoaderData, useLocation } from "react-router";
+import { LogEntryDrawer } from "~/components/LogEntryDrawer";
+import { useLogEntryDrawer } from "~/lib/hooks/useLogEntryDrawer";
 import { Button } from "~/components/ui/button";
 import { Separator } from "~/components/ui/separator";
 import { formatDateForDisplay, getDaysArray, isDateToday } from "~/lib/dates";
@@ -67,6 +69,18 @@ export default function Home() {
   const [expandedTrackers, setExpandedTrackers] = useState<Set<string>>(
     () => new Set(savedExpandedTrackers)
   );
+  const { state: logEntryDrawer, openLogEntry, closeLogEntry } = useLogEntryDrawer("/");
+  const location = useLocation();
+
+  useEffect(() => {
+    const pending = (location.state as { openLogEntry?: { trackerId: string; date: string } } | null)
+      ?.openLogEntry;
+    if (pending) {
+      openLogEntry(pending.trackerId, pending.date);
+      // Clear state without triggering React Router navigation (avoid /?index)
+      window.history.replaceState({ ...window.history.state, usr: null }, "");
+    }
+  }, []);
 
   // TODO: Investigate why this is necessary
   useEffect(() => {
@@ -344,11 +358,11 @@ export default function Home() {
                                 {trackerTypesLabels[tracker.type].short}
                               </span>
                             )}
-                          <Link
-                            to={`/t/${tracker.id}/log-entry?date=${dateString}`}
-                            prefetch="viewport"
-                            className="absolute inset-0"
-                            aria-label={`Open ${tracker.title} tracker`}
+                          <button
+                            type="button"
+                            onClick={() => openLogEntry(tracker.id, dateString)}
+                            className="absolute inset-0 cursor-pointer"
+                            aria-label={`Log entry for ${tracker.title}`}
                           />
                         </div>
                       );
@@ -369,6 +383,15 @@ export default function Home() {
             </Link>
           </Button>
         </div>
+      )}
+
+      {logEntryDrawer.trackerId && (
+        <LogEntryDrawer
+          open={logEntryDrawer.open}
+          onClose={closeLogEntry}
+          trackerId={logEntryDrawer.trackerId}
+          date={logEntryDrawer.date}
+        />
       )}
     </div>
   );

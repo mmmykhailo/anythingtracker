@@ -218,7 +218,8 @@ The app includes Progressive Web App features:
 ## Commit Messages
 
 - Never add `Co-Authored-By: Claude` or any AI attribution to commits
-- Keep messages short and lowercase
+- Keep messages short and lowercase; no long descriptions
+- When a commit resolves a GitHub issue, add `resolves #N` as the commit body (not in the subject line)
 
 ## Common Pitfalls
 

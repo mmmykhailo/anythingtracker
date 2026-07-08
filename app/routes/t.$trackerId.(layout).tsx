@@ -8,7 +8,10 @@ import {
 } from "react-router";
 import { Button } from "~/components/ui/button";
 import TabsNavigation from "~/components/ui/tabs-navigation";
+import { LogEntryDrawer } from "~/components/LogEntryDrawer";
 import { getTrackerById } from "~/lib/db";
+import { formatDateString } from "~/lib/dates";
+import { useLogEntryDrawer } from "~/lib/hooks/useLogEntryDrawer";
 
 export async function clientLoader({ params }: ClientLoaderFunctionArgs) {
   const trackerId = params.trackerId;
@@ -30,6 +33,9 @@ export async function clientLoader({ params }: ClientLoaderFunctionArgs) {
 export default function TrackerPageLayout() {
   const { trackerId } = useParams();
   const { tracker } = useLoaderData<typeof clientLoader>();
+  const { state: logEntryDrawer, openLogEntry, closeLogEntry } = useLogEntryDrawer(
+    () => `/t/${trackerId}/history`
+  );
 
   return (
     <>
@@ -42,8 +48,8 @@ export default function TrackerPageLayout() {
           </Button>
           <span className="font-medium">{tracker.title}</span>
         </div>
-        <Button asChild variant="secondary">
-          <Link to={`/t/${trackerId}/log-entry`}>Log new entry</Link>
+        <Button variant="secondary" onClick={() => openLogEntry(trackerId!, formatDateString(new Date()))}>
+          Log new entry
         </Button>
       </div>
       <TabsNavigation
@@ -64,6 +70,15 @@ export default function TrackerPageLayout() {
         ]}
       />
       <Outlet />
+
+      {logEntryDrawer.trackerId && (
+        <LogEntryDrawer
+          open={logEntryDrawer.open}
+          onClose={closeLogEntry}
+          trackerId={logEntryDrawer.trackerId}
+          date={logEntryDrawer.date}
+        />
+      )}
     </>
   );
 }
