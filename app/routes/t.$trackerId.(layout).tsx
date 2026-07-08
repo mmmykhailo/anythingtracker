@@ -1,15 +1,14 @@
 import { CaretLeft } from "@phosphor-icons/react";
-import { useState } from "react";
 import {
   Link,
   Outlet,
   useLoaderData,
+  useNavigate,
   useParams,
   type ClientLoaderFunctionArgs,
 } from "react-router";
 import { Button } from "~/components/ui/button";
 import TabsNavigation from "~/components/ui/tabs-navigation";
-import { LogEntryDrawer } from "~/components/LogEntryDrawer";
 import { getTrackerById } from "~/lib/db";
 import { formatDateString } from "~/lib/dates";
 
@@ -33,7 +32,7 @@ export async function clientLoader({ params }: ClientLoaderFunctionArgs) {
 export default function TrackerPageLayout() {
   const { trackerId } = useParams();
   const { tracker } = useLoaderData<typeof clientLoader>();
-  const [drawerOpen, setDrawerOpen] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <>
@@ -46,7 +45,10 @@ export default function TrackerPageLayout() {
           </Button>
           <span className="font-medium">{tracker.title}</span>
         </div>
-        <Button variant="secondary" onClick={() => setDrawerOpen(true)}>
+        <Button
+          variant="secondary"
+          onClick={() => navigate(`/t/${trackerId}/log-entry`)}
+        >
           Log new entry
         </Button>
       </div>
@@ -68,15 +70,6 @@ export default function TrackerPageLayout() {
         ]}
       />
       <Outlet />
-
-      {trackerId && (
-        <LogEntryDrawer
-          open={drawerOpen}
-          onClose={() => setDrawerOpen(false)}
-          trackerId={trackerId}
-          date={formatDateString(new Date())}
-        />
-      )}
     </>
   );
 }
