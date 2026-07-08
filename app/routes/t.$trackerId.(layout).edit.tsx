@@ -33,6 +33,11 @@ import {
   SelectValue,
 } from "~/components/ui/select";
 import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "~/components/ui/tooltip";
+import {
   type TrackerType,
   trackerTypes,
   trackerTypesLabels,
@@ -148,6 +153,8 @@ export default function TrackerEditPage() {
   const [isCheckboxTypeSelected, setIsCheckboxTypeSelected] = useState(
     tracker.type === "checkbox"
   );
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+  const [typeInfoOpen, setTypeInfoOpen] = useState(false);
 
   const { state, errors, updateField, setFieldError, clearErrors, setState } =
     useFormState<TrackerFormData>({
@@ -186,16 +193,6 @@ export default function TrackerEditPage() {
       }
     }
   }, [actionData, setFieldError]);
-
-  const handleDelete = (e: React.FormEvent) => {
-    if (
-      !confirm(
-        `Are you sure you want to delete "${tracker.title}"? This will remove all data for this tracker.`
-      )
-    ) {
-      e.preventDefault();
-    }
-  };
 
   if (!tracker) {
     return (
@@ -240,45 +237,53 @@ export default function TrackerEditPage() {
 
           <div className="grid items-center gap-3">
             <Label htmlFor="trackerTypeTrigger">Type</Label>
-            <Select
-              required
-              value={state.type}
-              onValueChange={(value: TrackerType) => {
-                updateField("type", value);
-                setIsCheckboxTypeSelected(value === "checkbox");
-                // Clear goal when switching to checkbox type
-                if (value === "checkbox") {
-                  updateField("goal", undefined);
-                }
-              }}
-              disabled={!canChangeType}
+            <Tooltip
+              open={!canChangeType ? typeInfoOpen : undefined}
+              onOpenChange={!canChangeType ? setTypeInfoOpen : undefined}
             >
-              <SelectTrigger
-                id="trackerTypeTrigger"
-                className={!canChangeType ? "opacity-60" : ""}
-              >
-                <SelectValue placeholder="Select type" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectGroup>
-                  {trackerTypes.map((trackerType) => (
-                    <SelectItem key={trackerType} value={trackerType}>
-                      {trackerTypesLabels[trackerType].long}
-                    </SelectItem>
-                  ))}
-                </SelectGroup>
-              </SelectContent>
-            </Select>
-            {!canChangeType && hasEntries && (
-              <div className="text-muted-foreground text-sm">
-                Cannot change type because this tracker has existing entries
-              </div>
-            )}
-            {!canChangeType && tracker.parentId && (
-              <div className="text-primary text-sm">
-                Cannot change type because this tracker has a parent tracker
-              </div>
-            )}
+              <TooltipTrigger asChild>
+                <span
+                  className={!canChangeType ? "cursor-not-allowed" : ""}
+                  onClick={() => !canChangeType && setTypeInfoOpen((o) => !o)}
+                >
+                  <Select
+                    required
+                    value={state.type}
+                    onValueChange={(value: TrackerType) => {
+                      updateField("type", value);
+                      setIsCheckboxTypeSelected(value === "checkbox");
+                      if (value === "checkbox") {
+                        updateField("goal", undefined);
+                      }
+                    }}
+                    disabled={!canChangeType}
+                  >
+                    <SelectTrigger
+                      id="trackerTypeTrigger"
+                      className={!canChangeType ? "pointer-events-none opacity-60 w-full" : "w-full"}
+                    >
+                      <SelectValue placeholder="Select type" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectGroup>
+                        {trackerTypes.map((trackerType) => (
+                          <SelectItem key={trackerType} value={trackerType}>
+                            {trackerTypesLabels[trackerType].long}
+                          </SelectItem>
+                        ))}
+                      </SelectGroup>
+                    </SelectContent>
+                  </Select>
+                </span>
+              </TooltipTrigger>
+              {!canChangeType && (
+                <TooltipContent>
+                  {hasEntries
+                    ? "Type can't be changed once entries exist"
+                    : "Type can't be changed because this tracker has a parent"}
+                </TooltipContent>
+              )}
+            </Tooltip>
             {errors.type && (
               <div className="text-destructive text-sm">{errors.type}</div>
             )}
@@ -342,17 +347,38 @@ export default function TrackerEditPage() {
         </div>
       </Form>
 
-      <Form method="post" onSubmit={handleDelete} className="mt-2">
-        <input type="hidden" name="intent" value="delete" />
+      {showDeleteConfirm ? (
+        <div className="mt-2 flex items-center gap-2">
+          <span className="text-sm text-muted-foreground">
+            Are you sure? This deletes all entries.
+          </span>
+          <Form method="post">
+            <input type="hidden" name="intent" value="delete" />
+            <Button type="submit" disabled={isDeleting} variant="destructive" size="sm">
+              {isDeleting ? "Deleting..." : "Confirm"}
+            </Button>
+          </Form>
+          <Button
+            type="button"
+            variant="outline"
+            size="sm"
+            onClick={() => setShowDeleteConfirm(false)}
+          >
+            Cancel
+          </Button>
+        </div>
+      ) : (
         <Button
-          type="submit"
+          type="button"
+          className="mt-2"
           disabled={isSaving || isDeleting}
           variant="destructive"
+          onClick={() => setShowDeleteConfirm(true)}
         >
           <Trash weight="bold" />
-          {isDeleting ? "Deleting..." : "Delete"}
+          Delete
         </Button>
-      </Form>
+      )}
     </div>
   );
 }
