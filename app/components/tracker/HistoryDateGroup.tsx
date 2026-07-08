@@ -1,4 +1,4 @@
-import { Calendar, Trash2 } from "lucide-react";
+import { CalendarBlank, Trash } from "@phosphor-icons/react";
 import { Button } from "~/components/ui/button";
 import { Table, TableBody, TableCell, TableRow } from "~/components/ui/table";
 import {
@@ -62,7 +62,7 @@ export function HistoryDateGroup({
     <div className="space-y-2">
       <div className="flex items-center justify-between text-sm font-medium text-foreground pb-1">
         <div className="flex items-center gap-2">
-          <Calendar className="h-3 w-3" />
+          <CalendarBlank className="h-3 w-3" />
           <span>{isToday ? "Today" : formatDate(date)}</span>
           <span className="text-xs text-muted-foreground">
             ({entries.length} {entries.length === 1 ? "entry" : "entries"})
@@ -123,7 +123,7 @@ export function HistoryDateGroup({
                     disabled={deletingEntryId === entry.id || entryLoading}
                     className="text-destructive hover:text-destructive hover:bg-destructive/10 p-1 h-auto"
                   >
-                    <Trash2 className="h-3 w-3" />
+                    <Trash className="h-3 w-3" weight="bold" />
                   </Button>
                 </TableCell>
               </TableRow>

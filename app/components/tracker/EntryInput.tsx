@@ -1,4 +1,4 @@
-import { Plus, PlusIcon, X, Hash } from "lucide-react";
+import { Plus, X, Hash } from "@phosphor-icons/react";
 import { useState } from "react";
 import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
@@ -102,7 +102,7 @@ export function EntryInput({
               disabled={entryLoading}
               className="w-full"
             >
-              <X /> Mark as Untracked
+              <X weight="bold" /> Mark as Untracked
             </Button>
           ) : (
             <>
@@ -144,7 +144,7 @@ export function EntryInput({
                 disabled={entryLoading}
                 className="w-full"
               >
-                <Plus /> Mark as Tracked
+                <Plus weight="bold" /> Mark as Tracked
               </Button>
             </>
           )}
@@ -226,7 +226,7 @@ export function EntryInput({
           )}
 
           <Button onClick={handleSubmit} disabled={entryLoading || !displayValue}>
-            <PlusIcon /> Add
+            <Plus weight="bold" /> Add
           </Button>
         </>
       ) : null}

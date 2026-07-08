@@ -1,4 +1,4 @@
-import { Clock } from "lucide-react";
+import { Clock } from "@phosphor-icons/react";
 import { useMemo } from "react";
 import { HistoryDateGroup } from "./HistoryDateGroup";
 import { trackerTypesLabels, type Tracker } from "~/lib/trackers";

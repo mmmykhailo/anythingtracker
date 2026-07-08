@@ -8,7 +8,7 @@ import {
   CardTitle,
 } from "~/components/ui/card";
 import { clearAllData, seedInitialData } from "~/lib/db";
-import { Trash2, Database } from "lucide-react";
+import { Trash, Database } from "@phosphor-icons/react";
 
 export function DevUtils() {
   const [isClearing, setIsClearing] = useState(false);
@@ -73,7 +73,7 @@ export function DevUtils() {
             disabled={isClearing}
             className="w-full justify-start"
           >
-            <Trash2 className="h-4 w-4 mr-2" />
+            <Trash className="h-4 w-4 mr-2" weight="bold" />
             {isClearing ? "Clearing..." : "Clear All Data"}
           </Button>
           <Button
@@ -82,7 +82,7 @@ export function DevUtils() {
             disabled={isSeeding}
             className="w-full justify-start"
           >
-            <Database className="h-4 w-4 mr-2" />
+            <Database className="h-4 w-4 mr-2" weight="duotone" />
             {isSeeding ? "Seeding..." : "Seed Sample Data"}
           </Button>
           <div className="text-xs text-muted-foreground mt-2">

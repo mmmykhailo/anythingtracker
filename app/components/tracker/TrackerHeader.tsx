@@ -1,4 +1,4 @@
-import { Calendar, ChevronLeft } from "lucide-react";
+import { CalendarBlank, CaretLeft } from "@phosphor-icons/react";
 import { Link } from "react-router";
 import { Button } from "~/components/ui/button";
 
@@ -18,13 +18,13 @@ export function TrackerHeader({
       <div className="flex gap-4 items-center">
         <Button asChild variant="ghost" size="icon">
           <Link to="/" prefetch="viewport">
-            <ChevronLeft />
+            <CaretLeft weight="bold" />
           </Link>
         </Button>
         <span className="font-medium">{trackerTitle}</span>
       </div>
       <div className="flex items-center gap-2">
-        <Calendar className="h-4 w-4" />
+        <CalendarBlank className="h-4 w-4" />
         <input
           type="date"
           value={selectedDate}

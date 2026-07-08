@@ -1,4 +1,4 @@
-import { ChevronLeft, Save, Github, Info, X, Shield } from "lucide-react";
+import { CaretLeft, FloppyDisk, GithubLogo, Info, X, Shield } from "@phosphor-icons/react";
 import { useState, useEffect, useMemo } from "react";
 import {
   Link,
@@ -103,7 +103,7 @@ export async function clientAction({ request }: ClientActionFunctionArgs) {
 
 export function meta() {
   return [
-    { title: "GitHub Sync Settings - AnythingTracker" },
+    { title: "GitHub Sync Gear - AnythingTracker" },
     {
       name: "description",
       content:
@@ -180,10 +180,10 @@ export default function GitHubSyncSettingsPage() {
               to={isFromOnboarding ? "/onboarding" : "/settings"}
               prefetch="viewport"
             >
-              <ChevronLeft />
+              <CaretLeft weight="bold" />
             </Link>
           </Button>
-          <span className="font-medium">GitHub Sync Settings</span>
+          <span className="font-medium">GitHub Sync Gear</span>
         </div>
         {isFromOnboarding && (
           <Button asChild variant="ghost">
@@ -200,7 +200,7 @@ export default function GitHubSyncSettingsPage() {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Github className="h-5 w-5" />
+                <GithubLogo className="h-5 w-5" weight="duotone" />
                 GitHub Gist Sync
               </CardTitle>
               <CardDescription>
@@ -233,7 +233,7 @@ export default function GitHubSyncSettingsPage() {
             </div>
             {showTokenInfo && (
               <div className="text-xs text-muted-foreground bg-secondary/50 p-2 rounded">
-                Create a token at github.com → Settings → Developer settings →
+                Create a token at github.com → Gear → Developer settings →
                 Personal access tokens → Fine-grained tokens. Select 'Gists'
                 permission with read/write access.
               </div>
@@ -346,7 +346,7 @@ export default function GitHubSyncSettingsPage() {
 
           <div className="flex flex-col gap-3 mt-4">
             <Button type="submit" disabled={isSaving}>
-              <Save className="h-4 w-4" />
+              <FloppyDisk className="h-4 w-4" weight="bold" />
               {isSaving
                 ? "Saving..."
                 : isSyncEnabled
@@ -371,7 +371,7 @@ export default function GitHubSyncSettingsPage() {
           variant="outline"
           className="text-muted-foreground w-full"
         >
-          <X className="h-4 w-4" />I don't want GitHub sync
+          <X className="h-4 w-4" weight="bold" />I don't want GitHub sync
         </Button>
       </Form>
     </div>

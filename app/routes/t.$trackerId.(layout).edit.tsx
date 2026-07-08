@@ -11,7 +11,7 @@ import type {
   ClientLoaderFunctionArgs,
   ClientActionFunctionArgs,
 } from "react-router";
-import { Save, Trash2 } from "lucide-react";
+import { FloppyDisk, Trash } from "@phosphor-icons/react";
 import {
   getTrackerById,
   getEntryHistory,
@@ -336,8 +336,8 @@ export default function TrackerEditPage() {
 
         <div className="flex gap-2">
           <Button type="submit" disabled={isSaving || isDeleting}>
-            <Save />
-            {isSaving ? "Saving..." : "Save"}
+            <FloppyDisk weight="bold" />
+            {isSaving ? "Saving..." : "FloppyDisk"}
           </Button>
         </div>
       </Form>
@@ -349,7 +349,7 @@ export default function TrackerEditPage() {
           disabled={isSaving || isDeleting}
           variant="destructive"
         >
-          <Trash2 />
+          <Trash weight="bold" />
           {isDeleting ? "Deleting..." : "Delete"}
         </Button>
       </Form>

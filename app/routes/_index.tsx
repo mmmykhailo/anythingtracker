@@ -1,14 +1,5 @@
 import { addDays, format } from "date-fns";
-import {
-  BarChart3,
-  Check,
-  ChevronDown,
-  ChevronLeft,
-  ChevronRight,
-  ListTree,
-  Plus,
-  Settings,
-} from "lucide-react";
+import { ChartBar, Check, CaretDown, CaretLeft, CaretRight, Tree, Plus, Gear } from "@phosphor-icons/react";
 import { useState, useEffect } from "react";
 import { Link, redirect, useLoaderData } from "react-router";
 import { Button } from "~/components/ui/button";
@@ -185,25 +176,25 @@ export default function Home() {
         <div className="flex items-center gap-2">
           <Button asChild variant="ghost" size="icon">
             <Link to="/settings" prefetch="viewport">
-              <Settings className="h-4 w-4" />
+              <Gear className="h-4 w-4" weight="bold" />
             </Link>
           </Button>
           <Button asChild variant="ghost" size="icon">
             <Link to="/monthly-recap" prefetch="viewport">
-              <BarChart3 className="h-4 w-4" />
+              <ChartBar className="h-4 w-4" weight="duotone" />
             </Link>
           </Button>
           <SyncButton />
         </div>
         <div className="flex items-center gap-2">
           <Button size="sm" variant="ghost" onClick={goToPrevious}>
-            <ChevronLeft className="h-4 w-4" />
+            <CaretLeft className="h-4 w-4" weight="bold" />
           </Button>
           <div className="text-sm font-medium min-w-16 text-center">
             {monthDisplay}
           </div>
           <Button size="sm" variant="ghost" onClick={goToNext}>
-            <ChevronRight className="h-4 w-4" />
+            <CaretRight className="h-4 w-4" weight="bold" />
           </Button>
         </div>
       </div>
@@ -213,7 +204,7 @@ export default function Home() {
           <Empty className="my-8">
             <EmptyHeader>
               <EmptyMedia variant="icon">
-                <ListTree className="h-6 w-6" />
+                <Tree className="h-6 w-6" weight="duotone" />
               </EmptyMedia>
               <EmptyTitle>No trackers yet</EmptyTitle>
               <EmptyDescription>
@@ -224,7 +215,7 @@ export default function Home() {
             <EmptyContent>
               <Button asChild variant="default">
                 <Link to="/new-tracker" prefetch="viewport">
-                  <Plus />
+                  <Plus weight="bold" />
                   New tracker
                 </Link>
               </Button>
@@ -291,9 +282,9 @@ export default function Home() {
                           className="w-full h-full cursor-pointer transition-colors hover:bg-muted flex items-center justify-center"
                         >
                           {expandedTrackers.has(tracker.id) ? (
-                            <ChevronDown className="h-4 w-4" />
+                            <CaretDown className="h-4 w-4" weight="bold" />
                           ) : (
-                            <ChevronRight className="h-4 w-4" />
+                            <CaretRight className="h-4 w-4" weight="bold" />
                           )}
                         </button>
                       </div>
@@ -373,7 +364,7 @@ export default function Home() {
         <div className="mt-4 flex justify-center">
           <Button asChild variant="secondary">
             <Link to="/new-tracker" prefetch="viewport">
-              <Plus />
+              <Plus weight="bold" />
               New tracker
             </Link>
           </Button>

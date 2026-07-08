@@ -1,4 +1,4 @@
-import { Wifi, Info } from "lucide-react";
+import { WifiHigh, Info } from "@phosphor-icons/react";
 import { useState } from "react";
 import { Label } from "~/components/ui/label";
 import { Checkbox } from "~/components/ui/checkbox";
@@ -40,7 +40,7 @@ export function WifiOnlyAutoSyncSetting({ onValueChange }: WifiOnlyAutoSyncSetti
           htmlFor="wifiOnlyAutoSync"
           className="flex items-center gap-2 cursor-pointer"
         >
-          <Wifi className="h-4 w-4" />
+          <WifiHigh className="h-4 w-4" weight="duotone" />
           Auto-sync only on WiFi
         </Label>
         <Button

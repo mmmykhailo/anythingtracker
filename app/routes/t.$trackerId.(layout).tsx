@@ -1,4 +1,4 @@
-import { ChevronLeft } from "lucide-react";
+import { CaretLeft } from "@phosphor-icons/react";
 import {
   Link,
   Outlet,
@@ -37,7 +37,7 @@ export default function TrackerPageLayout() {
         <div className="flex gap-4 items-center">
           <Button asChild variant="ghost" size="icon">
             <Link to="/" prefetch="viewport">
-              <ChevronLeft />
+              <CaretLeft weight="bold" />
             </Link>
           </Button>
           <span className="font-medium">{tracker.title}</span>

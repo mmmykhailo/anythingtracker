@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { RefreshCw, CloudCheck, AlertCircle } from "lucide-react";
+import { ArrowsClockwise, CloudCheck, WarningCircle } from "@phosphor-icons/react";
 import { Button } from "~/components/ui/button";
 import {
   Tooltip,
@@ -27,27 +27,27 @@ export function SyncButton() {
   const getIcon = () => {
     // Show spinning icon when revalidating data
     if (isRevalidating) {
-      return <RefreshCw className="h-4 w-4 animate-spin text-muted-foreground" />;
+      return <ArrowsClockwise className="h-4 w-4 animate-spin text-muted-foreground" weight="bold" />;
     }
 
     switch (syncState.status) {
       case "syncing":
-        return <RefreshCw className="h-4 w-4 animate-spin text-foreground" />;
+        return <ArrowsClockwise className="h-4 w-4 animate-spin text-foreground" weight="bold" />;
       case "success":
       case "idle":
         // Show success icon if we have a recent sync
         if (syncState.lastSyncTime) {
           return (
-            <CloudCheck className="h-4 w-4 text-accent" />
+            <CloudCheck className="h-4 w-4 text-accent" weight="duotone" />
           );
         }
-        return <RefreshCw className="h-4 w-4" />;
+        return <ArrowsClockwise className="h-4 w-4" weight="bold" />;
       case "error":
         return (
-          <AlertCircle className="h-4 w-4 text-destructive" />
+          <WarningCircle className="h-4 w-4 text-destructive" weight="bold" />
         );
       default:
-        return <RefreshCw className="h-4 w-4" />;
+        return <ArrowsClockwise className="h-4 w-4" weight="bold" />;
     }
   };
 

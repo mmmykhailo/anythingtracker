@@ -1,16 +1,5 @@
 import { Link } from "react-router";
-import {
-  BarChart3,
-  CheckCircle2,
-  Cloud,
-  Database,
-  GitBranchIcon,
-  Lock,
-  Smartphone,
-  Target,
-  TrendingUp,
-  Zap,
-} from "lucide-react";
+import { ChartBar, CheckCircle, Cloud, Database, GitBranch, Lock, DeviceMobile, Target, TrendUp, Lightning } from "@phosphor-icons/react";
 import { Button } from "~/components/ui/button";
 import {
   Card,
@@ -43,7 +32,7 @@ export default function LandingPage() {
         <Glow className="h-1/3 my-auto top-0 bottom-0" />
         <div className="relative flex flex-col items-center justify-center text-center py-16 px-4 space-y-6 min-h-[calc(min(80vh,764px))]">
           <Badge variant="secondary" className="mb-2">
-            <Lock className="h-3 w-3 mr-1" />
+            <Lock className="h-3 w-3 mr-1" weight="duotone" />
             Privacy-First Tracking
           </Badge>
           <h1 className="text-4xl font-bold tracking-tight bg-gradient-to-br from-white to-gray-400 bg-clip-text text-transparent pb-1">
@@ -58,7 +47,7 @@ export default function LandingPage() {
           <div className="flex flex-col sm:flex-row gap-3 pt-4">
             <Button asChild size="lg" className="text-base">
               <Link to="/onboarding" prefetch="viewport">
-                <Zap className="h-4 w-4" />
+                <Lightning className="h-4 w-4" weight="bold" />
                 Get Started Free
               </Link>
             </Button>
@@ -82,7 +71,7 @@ export default function LandingPage() {
           <Card className="border-primary/20">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Target className="h-5 w-5 text-blue-500" />
+                <Target className="h-5 w-5 text-blue-500" weight="duotone" />
                 Track Anything You Want
               </CardTitle>
               <CardDescription>
@@ -93,17 +82,17 @@ export default function LandingPage() {
             <CardContent>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li className="flex items-start gap-2">
-                  <CheckCircle2 className="h-4 w-4 mt-0.5 text-green-500 shrink-0" />
+                  <CheckCircle className="h-4 w-4 mt-0.5 text-green-500 shrink-0" weight="duotone" />
                   <span>
                     Numeric trackers with custom units (liters, steps, etc.)
                   </span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle2 className="h-4 w-4 mt-0.5 text-green-500 shrink-0" />
+                  <CheckCircle className="h-4 w-4 mt-0.5 text-green-500 shrink-0" weight="duotone" />
                   <span>Checkbox trackers for yes/no habits</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle2 className="h-4 w-4 mt-0.5 text-green-500 shrink-0" />
+                  <CheckCircle className="h-4 w-4 mt-0.5 text-green-500 shrink-0" weight="duotone" />
                   <span>Nested trackers (e.g., Beer → Alcohol → Drinks)</span>
                 </li>
               </ul>
@@ -113,7 +102,7 @@ export default function LandingPage() {
           <Card className="border-primary/20">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <TrendingUp className="h-5 w-5 text-green-500" />
+                <TrendUp className="h-5 w-5 text-green-500" weight="duotone" />
                 Visualize Your Progress
               </CardTitle>
               <CardDescription>
@@ -124,15 +113,15 @@ export default function LandingPage() {
             <CardContent>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li className="flex items-start gap-2">
-                  <CheckCircle2 className="h-4 w-4 mt-0.5 text-green-500 shrink-0" />
+                  <CheckCircle className="h-4 w-4 mt-0.5 text-green-500 shrink-0" weight="duotone" />
                   <span>Week-at-a-glance view for all your trackers</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle2 className="h-4 w-4 mt-0.5 text-green-500 shrink-0" />
+                  <CheckCircle className="h-4 w-4 mt-0.5 text-green-500 shrink-0" weight="duotone" />
                   <span>Detailed history and statistics per tracker</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle2 className="h-4 w-4 mt-0.5 text-green-500 shrink-0" />
+                  <CheckCircle className="h-4 w-4 mt-0.5 text-green-500 shrink-0" weight="duotone" />
                   <span>Monthly recap with shareable summaries</span>
                 </li>
               </ul>
@@ -142,7 +131,7 @@ export default function LandingPage() {
           <Card className="border-primary/20">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Database className="h-5 w-5 text-purple-500" />
+                <Database className="h-5 w-5 text-purple-500" weight="duotone" />
                 Local-First Approach
               </CardTitle>
               <CardDescription>
@@ -153,11 +142,11 @@ export default function LandingPage() {
             <CardContent>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li className="flex items-start gap-2">
-                  <CheckCircle2 className="h-4 w-4 mt-0.5 text-green-500 shrink-0" />
+                  <CheckCircle className="h-4 w-4 mt-0.5 text-green-500 shrink-0" weight="duotone" />
                   <span>All data stored locally in IndexedDB</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle2 className="h-4 w-4 mt-0.5 text-green-500 shrink-0" />
+                  <CheckCircle className="h-4 w-4 mt-0.5 text-green-500 shrink-0" weight="duotone" />
                   <span>Works offline - no internet required</span>
                 </li>
               </ul>
@@ -167,7 +156,7 @@ export default function LandingPage() {
           <Card className="border-primary/20">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Cloud className="h-5 w-5 text-blue-400" />
+                <Cloud className="h-5 w-5 text-blue-400" weight="duotone" />
                 Optional Cloud Sync
               </CardTitle>
               <CardDescription>
@@ -178,15 +167,15 @@ export default function LandingPage() {
             <CardContent>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li className="flex items-start gap-2">
-                  <CheckCircle2 className="h-4 w-4 mt-0.5 text-green-500 shrink-0" />
+                  <CheckCircle className="h-4 w-4 mt-0.5 text-green-500 shrink-0" weight="duotone" />
                   <span>Sync via GitHub Gist - your data, your account</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle2 className="h-4 w-4 mt-0.5 text-green-500 shrink-0" />
+                  <CheckCircle className="h-4 w-4 mt-0.5 text-green-500 shrink-0" weight="duotone" />
                   <span>Optional AES-256 encryption for extra security</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle2 className="h-4 w-4 mt-0.5 text-green-500 shrink-0" />
+                  <CheckCircle className="h-4 w-4 mt-0.5 text-green-500 shrink-0" weight="duotone" />
                   <span>Automatic backup and conflict resolution</span>
                 </li>
               </ul>
@@ -196,7 +185,7 @@ export default function LandingPage() {
           <Card className="border-primary/20">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Smartphone className="h-5 w-5 text-orange-500" />
+                <DeviceMobile className="h-5 w-5 text-orange-500" weight="duotone" />
                 Progressive Web App
               </CardTitle>
               <CardDescription>
@@ -206,15 +195,15 @@ export default function LandingPage() {
             <CardContent>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li className="flex items-start gap-2">
-                  <CheckCircle2 className="h-4 w-4 mt-0.5 text-green-500 shrink-0" />
+                  <CheckCircle className="h-4 w-4 mt-0.5 text-green-500 shrink-0" weight="duotone" />
                   <span>Works on iOS, Android and desktop</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle2 className="h-4 w-4 mt-0.5 text-green-500 shrink-0" />
+                  <CheckCircle className="h-4 w-4 mt-0.5 text-green-500 shrink-0" weight="duotone" />
                   <span>Add to home screen for quick access</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle2 className="h-4 w-4 mt-0.5 text-green-500 shrink-0" />
+                  <CheckCircle className="h-4 w-4 mt-0.5 text-green-500 shrink-0" weight="duotone" />
                   <span>Offline support and fast loading</span>
                 </li>
               </ul>
@@ -224,7 +213,7 @@ export default function LandingPage() {
           <Card className="border-primary/20">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <BarChart3 className="h-5 w-5 text-cyan-500" />
+                <ChartBar className="h-5 w-5 text-cyan-500" weight="duotone" />
                 Smart Features
               </CardTitle>
               <CardDescription>
@@ -234,15 +223,15 @@ export default function LandingPage() {
             <CardContent>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li className="flex items-start gap-2">
-                  <CheckCircle2 className="h-4 w-4 mt-0.5 text-green-500 shrink-0" />
+                  <CheckCircle className="h-4 w-4 mt-0.5 text-green-500 shrink-0" weight="duotone" />
                   <span>Quick-add buttons for common values</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle2 className="h-4 w-4 mt-0.5 text-green-500 shrink-0" />
+                  <CheckCircle className="h-4 w-4 mt-0.5 text-green-500 shrink-0" weight="duotone" />
                   <span>Goal tracking with visual indicators</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle2 className="h-4 w-4 mt-0.5 text-green-500 shrink-0" />
+                  <CheckCircle className="h-4 w-4 mt-0.5 text-green-500 shrink-0" weight="duotone" />
                   <span>Add notes and tags to entries</span>
                 </li>
               </ul>
@@ -314,7 +303,7 @@ export default function LandingPage() {
       <section className="py-12 px-4">
         <Card className="border-primary/30 bg-gradient-to-br from-primary/5 to-primary/10 max-w-2xl mx-auto">
           <CardHeader className="text-center">
-            <Lock className="h-10 w-10 mx-auto mb-4 text-primary" />
+            <Lock className="h-10 w-10 mx-auto mb-4 text-primary" weight="duotone" />
             <CardTitle className="text-2xl">Privacy First, Always</CardTitle>
             <CardDescription className="text-base">
               Your data is yours and yours alone
@@ -323,35 +312,35 @@ export default function LandingPage() {
           <CardContent className="space-y-4">
             <ul className="space-y-3 text-sm">
               <li className="flex items-start gap-3">
-                <CheckCircle2 className="h-5 w-5 mt-0.5 text-green-500 shrink-0" />
+                <CheckCircle className="h-5 w-5 mt-0.5 text-green-500 shrink-0" weight="duotone" />
                 <span>
                   <strong>No tracking or analytics:</strong> We don't collect
                   any data about you or your usage
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                <CheckCircle2 className="h-5 w-5 mt-0.5 text-green-500 shrink-0" />
+                <CheckCircle className="h-5 w-5 mt-0.5 text-green-500 shrink-0" weight="duotone" />
                 <span>
                   <strong>Local-first:</strong> All your data lives on your
                   device in your browser's storage
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                <CheckCircle2 className="h-5 w-5 mt-0.5 text-green-500 shrink-0" />
+                <CheckCircle className="h-5 w-5 mt-0.5 text-green-500 shrink-0" weight="duotone" />
                 <span>
                   <strong>Optional sync:</strong> If you enable GitHub sync,
                   your data goes to YOUR GitHub account, not our servers
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                <CheckCircle2 className="h-5 w-5 mt-0.5 text-green-500 shrink-0" />
+                <CheckCircle className="h-5 w-5 mt-0.5 text-green-500 shrink-0" weight="duotone" />
                 <span>
                   <strong>Encryption available:</strong> Enable AES-256
                   encryption for your synced data for extra peace of mind
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                <CheckCircle2 className="h-5 w-5 mt-0.5 text-green-500 shrink-0" />
+                <CheckCircle className="h-5 w-5 mt-0.5 text-green-500 shrink-0" weight="duotone" />
                 <span>
                   <strong>Open source:</strong> The entire codebase is open for
                   inspection on GitHub
@@ -371,7 +360,7 @@ export default function LandingPage() {
         <div className="pt-4">
           <Button asChild size="lg" className="text-base">
             <Link to="/onboarding" prefetch="viewport">
-              <Zap className="h-4 w-4" />
+              <Lightning className="h-4 w-4" weight="bold" />
               Get Started Free
             </Link>
           </Button>
@@ -388,7 +377,7 @@ export default function LandingPage() {
         </div>
 
         <Badge variant="secondary" className="mt-6" title="Current Version">
-          <GitBranchIcon className="h-3 w-3 mr-1" />v{APP_VERSION}
+          <GitBranch className="h-3 w-3 mr-1" weight="duotone" />v{APP_VERSION}
         </Badge>
       </footer>
     </div>

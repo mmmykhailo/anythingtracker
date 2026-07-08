@@ -1,4 +1,4 @@
-import { Download, Share } from "lucide-react";
+import { DownloadSimple, Export } from "@phosphor-icons/react";
 import { useState } from "react";
 import { Button } from "~/components/ui/button";
 import {
@@ -69,7 +69,7 @@ export function InstallPwaPrompt() {
         <CardContent>
           <div className="flex flex-col gap-2">
             <Button onClick={handleInstallClick} size="sm" className="w-full">
-              <Download className="h-4 w-4 mr-2" />
+              <DownloadSimple className="h-4 w-4 mr-2" weight="bold" />
               Install App
             </Button>
             <Button
@@ -99,7 +99,7 @@ export function InstallPwaPrompt() {
               </div>
               <div className="flex-1">
                 <p className="text-sm">
-                  Tap the <Share className="inline h-4 w-4 mx-1" /> Share button
+                  Tap the <Export className="inline h-4 w-4 mx-1" weight="duotone" /> Export button
                   in Safari (at the bottom or top of the screen)
                 </p>
               </div>

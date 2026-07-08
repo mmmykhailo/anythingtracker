@@ -1,4 +1,4 @@
-import { X } from "lucide-react";
+import { X } from "@phosphor-icons/react";
 import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
 import { useState, useEffect, useRef } from "react";
@@ -99,7 +99,7 @@ export function NumberInput({
           onClick={handleClear}
           type="button"
         >
-          <X />
+          <X weight="bold" />
         </Button>
       )}
     </div>

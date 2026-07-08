@@ -5,7 +5,7 @@ import {
   TooltipTrigger,
 } from "~/components/ui/tooltip";
 import { Button } from "~/components/ui/button";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { CaretLeft, CaretRight } from "@phosphor-icons/react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { cn } from "~/lib/utils";
 import { formatStoredValue } from "~/lib/number-conversions";
@@ -322,14 +322,14 @@ export function TrackerContributionGraph({
               size="icon"
               onClick={() => setSelectedYear((prev) => prev - 1)}
             >
-              <ChevronLeft />
+              <CaretLeft weight="bold" />
             </Button>
             <Button
               variant="outline"
               size="icon"
               onClick={() => setSelectedYear((prev) => prev + 1)}
             >
-              <ChevronRight />
+              <CaretRight weight="bold" />
             </Button>
           </div>
         </div>

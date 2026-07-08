@@ -1,10 +1,4 @@
-import {
-  ChevronLeft,
-  Download,
-  Upload,
-  Settings as SettingsIcon,
-  CheckCircle2,
-} from "lucide-react";
+import { CaretLeft, DownloadSimple, Upload, Gear as SettingsIcon, CheckCircle } from "@phosphor-icons/react";
 import { useRef, useState, useEffect } from "react";
 import {
   Link,
@@ -100,7 +94,7 @@ export async function clientAction({ request }: ClientActionFunctionArgs) {
 
     return { success: false, message: "Unknown intent" };
   } catch (error) {
-    console.error("Settings action error:", error);
+    console.error("Gear action error:", error);
     return {
       success: false,
       message: error instanceof Error ? error.message : "An error occurred",
@@ -110,7 +104,7 @@ export async function clientAction({ request }: ClientActionFunctionArgs) {
 
 export function meta() {
   return [
-    { title: "Settings - AnythingTracker" },
+    { title: "Gear - AnythingTracker" },
     {
       name: "description",
       content:
@@ -203,10 +197,10 @@ export default function SettingsPage() {
         <div className="flex gap-4 items-center">
           <Button asChild variant="ghost" size="icon">
             <Link to="/" prefetch="viewport">
-              <ChevronLeft />
+              <CaretLeft weight="bold" />
             </Link>
           </Button>
-          <span className="font-medium">Settings</span>
+          <span className="font-medium">Gear</span>
         </div>
       </div>
 
@@ -230,13 +224,13 @@ export default function SettingsPage() {
               >
                 {exportSuccess ? (
                   <>
-                    <CheckCircle2 className="h-4 w-4 mr-2 text-accent" />
+                    <CheckCircle className="h-4 w-4 mr-2 text-accent" weight="duotone" />
                     Exported
                   </>
                 ) : (
                   <>
-                    <Download className="h-4 w-4 mr-2" />
-                    {isExporting ? "Downloading..." : "Download my data"}
+                    <DownloadSimple className="h-4 w-4 mr-2" weight="bold" />
+                    {isExporting ? "Downloading..." : "DownloadSimple my data"}
                   </>
                 )}
               </Button>
@@ -262,18 +256,18 @@ export default function SettingsPage() {
               >
                 {importSuccess ? (
                   <>
-                    <CheckCircle2 className="h-4 w-4 mr-2 text-accent" />
+                    <CheckCircle className="h-4 w-4 mr-2 text-accent" weight="duotone" />
                     Imported
                   </>
                 ) : (
                   <>
-                    <Upload className="h-4 w-4 mr-2" />
+                    <Upload className="h-4 w-4 mr-2" weight="bold" />
                     {isImporting ? "Importing..." : "Import data"}
                   </>
                 )}
               </Button>
               <div className="text-xs text-muted-foreground mt-2">
-                Download creates a JSON file with all your trackers and history.
+                DownloadSimple creates a JSON file with all your trackers and history.
                 Import might break existing data. Please backup your data before
                 importing.
                 <br />

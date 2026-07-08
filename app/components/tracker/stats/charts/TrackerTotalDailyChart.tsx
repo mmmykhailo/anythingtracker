@@ -1,4 +1,4 @@
-import { TrendingUp } from "lucide-react";
+import { TrendUp } from "@phosphor-icons/react";
 import { Bar, BarChart, CartesianGrid, XAxis } from "recharts";
 import {
   Card,
@@ -149,11 +149,11 @@ export function TrackerTotalDailyChart({
           <div className="text-muted-foreground leading-none">
             {isPositiveTrend ? "Trending up" : "Trending down"} by{" "}
             {Math.abs(trend).toFixed(1)}% from previous day{" "}
-            <TrendingUp
+            <TrendUp
               className={`inline-block h-4 w-4 ${
                 isPositiveTrend ? "" : "rotate-180"
               }`}
-            />
+            weight="duotone" />
           </div>
         </CardFooter>
       )}

@@ -15,15 +15,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "~/components/ui/select";
-import {
-  ChevronLeft,
-  Download,
-  Calendar,
-  Share2,
-  CalendarX,
-  CopyIcon,
-  ChartNoAxesColumn,
-} from "lucide-react";
+import { CaretLeft, DownloadSimple, CalendarBlank, Share, CalendarX, Copy, ChartBar } from "@phosphor-icons/react";
 import clsx from "clsx";
 import {
   Empty,
@@ -310,7 +302,7 @@ export default function MonthlyRecap() {
   const [canShare, setCanShare] = useState(false);
 
   useEffect(() => {
-    // Check if Web Share API is available
+    // Check if Web Export API is available
     setCanShare(typeof navigator !== "undefined" && "share" in navigator);
   }, []);
 
@@ -410,7 +402,7 @@ export default function MonthlyRecap() {
       const fileName = getFileName(currentTracker.title);
       const file = new File([blob], fileName, { type: "image/png" });
 
-      // Check if Web Share API is available
+      // Check if Web Export API is available
       if (navigator.share && navigator.canShare({ files: [file] })) {
         try {
           await navigator.share({
@@ -420,7 +412,7 @@ export default function MonthlyRecap() {
           });
         } catch (error) {
           // User cancelled or share failed
-          console.log("Share cancelled or failed:", error);
+          console.log("Export cancelled or failed:", error);
         }
       } else {
         // Fallback: just download the file
@@ -481,7 +473,7 @@ export default function MonthlyRecap() {
             to="/"
             className="p-2 hover:bg-white/10 rounded-none transition-colors"
           >
-            <ChevronLeft className="w-6 h-6" />
+            <CaretLeft className="w-6 h-6" weight="bold" />
           </Link>
           <Select
             value={selectedMonth.toString()}
@@ -791,7 +783,7 @@ export default function MonthlyRecap() {
                   </div>
 
                   <div className="text-center mt-4 text-white/50 text-xs flex gap-1">
-                    <ChartNoAxesColumn className="w-4 h-4 inline mr-1 mb-0.5" />
+                    <ChartBar className="w-4 h-4 inline mr-1 mb-0.5" weight="duotone" />
                     Generated with tracker.mykhailo.net
                   </div>
                 </div>
@@ -825,23 +817,23 @@ export default function MonthlyRecap() {
               onClick={handleDownloadCard}
               className="flex-1 bg-black/30 hover:bg-black/40 text-white border-0"
             >
-              <Download className="w-4 h-4 mr-2" />
-              Download
+              <DownloadSimple className="w-4 h-4 mr-2" weight="bold" />
+              DownloadSimple
             </Button>
             {canShare ? (
               <Button
                 onClick={handleShareCard}
                 className="flex-1 bg-black/30 hover:bg-black/40 text-white border-0"
               >
-                <Share2 className="w-4 h-4 mr-2" />
-                Share
+                <Share className="w-4 h-4 mr-2" />
+                Export
               </Button>
             ) : (
               <Button
                 onClick={handleCopyCard}
                 className="flex-1 bg-black/30 hover:bg-black/40 text-white border-0"
               >
-                <CopyIcon className="w-4 h-4 mr-2" />
+                <Copy className="w-4 h-4 mr-2" />
                 Copy
               </Button>
             )}
@@ -893,7 +885,7 @@ export default function MonthlyRecap() {
         <Empty>
           <EmptyHeader>
             <EmptyMedia variant="icon">
-              <Calendar className="w-6 h-6" />
+              <CalendarBlank className="w-6 h-6" />
             </EmptyMedia>
             <EmptyTitle>Select a month to view your recap</EmptyTitle>
             <EmptyDescription>

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Link } from "react-router";
-import { Cloud, Shield, Smartphone, ChevronRight } from "lucide-react";
+import { Cloud, Shield, DeviceMobile, CaretRight } from "@phosphor-icons/react";
 import { Button } from "~/components/ui/button";
 import {
   Card,
@@ -44,7 +44,7 @@ export default function OnboardingPage() {
           <CardHeader>
             <CardTitle className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <Cloud className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+                <Cloud className="h-5 w-5 text-blue-600 dark:text-blue-400" weight="duotone" />
                 Optional Cloud Sync
               </div>
               <Badge variant="secondary">Recommended</Badge>
@@ -56,7 +56,7 @@ export default function OnboardingPage() {
           <CardContent className="space-y-4">
             <div className="space-y-3 text-sm text-muted-foreground">
               <div className="flex items-start gap-2">
-                <Smartphone className="h-4 w-4 mt-0.5 shrink-0" />
+                <DeviceMobile className="h-4 w-4 mt-0.5 shrink-0" weight="duotone" />
                 <span>Access your data from any device</span>
               </div>
               <div className="flex items-start gap-2">
@@ -64,7 +64,7 @@ export default function OnboardingPage() {
                 <span>Your data stays private in your GitHub account</span>
               </div>
               <div className="flex items-start gap-2">
-                <Cloud className="h-4 w-4 mt-0.5 shrink-0" />
+                <Cloud className="h-4 w-4 mt-0.5 shrink-0" weight="duotone" />
                 <span>Automatic backups prevent data loss</span>
               </div>
             </div>
@@ -77,9 +77,9 @@ export default function OnboardingPage() {
                   prefetch="viewport"
                   state={{ from: "onboarding" }}
                 >
-                  <Cloud className="h-4 w-4" />
-                  Set up Github Gist Sync
-                  <ChevronRight className="h-4 w-4 ml-auto" />
+                  <Cloud className="h-4 w-4" weight="duotone" />
+                  Set up GithubLogo Gist Sync
+                  <CaretRight className="h-4 w-4 ml-auto" weight="bold" />
                 </Link>
               </Button>
 
@@ -95,7 +95,7 @@ export default function OnboardingPage() {
             </div>
 
             <p className="text-xs text-muted-foreground text-center">
-              You can always enable sync later in Settings
+              You can always enable sync later in Gear
             </p>
           </CardContent>
         </Card>

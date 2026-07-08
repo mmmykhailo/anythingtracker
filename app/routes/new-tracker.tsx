@@ -1,4 +1,4 @@
-import { ChevronLeft, Save } from "lucide-react";
+import { CaretLeft, FloppyDisk } from "@phosphor-icons/react";
 import { useEffect, useState } from "react";
 import {
   Link,
@@ -162,14 +162,14 @@ export default function NewTrackerPage() {
           <div className="flex gap-4 items-center">
             <Button asChild variant="ghost" size="icon" type="button">
               <Link to="/" prefetch="viewport">
-                <ChevronLeft />
+                <CaretLeft weight="bold" />
               </Link>
             </Button>
             <span className="font-medium">New tracker</span>
           </div>
           <Button type="submit" disabled={isSaving}>
-            <Save />
-            {isSaving ? "Saving..." : "Save"}
+            <FloppyDisk weight="bold" />
+            {isSaving ? "Saving..." : "FloppyDisk"}
           </Button>
         </div>
         <div className="flex flex-col py-6 gap-4">
