@@ -60,7 +60,7 @@ export function HistoryDateGroup({
 
   return (
     <div className="space-y-2">
-      <div className="flex items-center justify-between text-sm font-medium text-foreground pb-1">
+      <div className="flex items-center justify-between text-sm font-medium text-foreground gap-2 pb-1 flex-wrap">
         <div className="flex items-center gap-2">
           <CalendarBlank className="h-3 w-3" />
           <span>{isToday ? "Today" : formatDate(date)}</span>
