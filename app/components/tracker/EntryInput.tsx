@@ -160,8 +160,8 @@ export function EntryInput({
             >
               {formatStoredValue(currentValue, tracker.type)}
               {!!tracker.goal &&
-                ` / ${formatStoredValue(tracker.goal, tracker.type)}`}
-              {trackerTypesLabels[tracker.type].shortest}
+                ` / ${formatStoredValue(tracker.goal, tracker.type)}`}{" "}
+              {trackerTypesLabels[tracker.type].short}
             </span>
           </div>
 
@@ -178,7 +178,10 @@ export function EntryInput({
             <div className="flex gap-4 overflow-auto -mb-2 pb-2 -mx-4 w-[calc(100%+2rem)] px-4">
               {quickAddValues.map(({ label, value }) => {
                 // Convert stored value to display value for quick-add buttons
-                const displayQuickAddValue = toDisplayValue(value, tracker.type);
+                const displayQuickAddValue = toDisplayValue(
+                  value,
+                  tracker.type
+                );
                 return (
                   <Button
                     className="grow"
@@ -225,7 +228,10 @@ export function EntryInput({
             </div>
           )}
 
-          <Button onClick={handleSubmit} disabled={entryLoading || !displayValue}>
+          <Button
+            onClick={handleSubmit}
+            disabled={entryLoading || !displayValue}
+          >
             <Plus weight="bold" /> Add
           </Button>
         </>
