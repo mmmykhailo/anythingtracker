@@ -204,7 +204,7 @@ export default function NewTrackerPage() {
             )}
           </div>
           <div className="grid items-center gap-3">
-            <Label htmlFor="trackerTypeTrigger">Measurement unit (type)</Label>
+            <Label htmlFor="trackerTypeTrigger">Type</Label>
             <Select
               required
               value={state.type}
@@ -218,7 +218,7 @@ export default function NewTrackerPage() {
                 id="trackerTypeTrigger"
                 className={isTypeDisabled ? "opacity-60" : ""}
               >
-                <SelectValue placeholder="Select measurement unit" />
+                <SelectValue placeholder="Select type" />
               </SelectTrigger>
               <SelectContent>
                 <SelectGroup>
@@ -232,7 +232,7 @@ export default function NewTrackerPage() {
             </Select>
             {isTypeDisabled && (
               <div className="text-primary text-sm">
-                Measurement unit automatically set to match parent tracker
+                Type automatically set to match parent tracker
               </div>
             )}
             {errors.type && (

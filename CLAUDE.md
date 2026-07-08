@@ -215,6 +215,11 @@ The app includes Progressive Web App features:
 7. **Onboarding**: New users redirected to `/onboarding` until they complete it
 8. **Development mode**: Dev utils panel (`components/dev-utils.tsx`) only shows in dev mode
 
+## Commit Messages
+
+- Never add `Co-Authored-By: Claude` or any AI attribution to commits
+- Keep messages short and lowercase
+
 ## Common Pitfalls
 
 - Don't forget to dispatch data change events after mutations

@@ -20,8 +20,8 @@ export const trackerTypesLabels: Record<
 > = {
   none: {
     shortest: "",
-    short: "None",
-    long: "None",
+    short: "Number",
+    long: "Number",
   },
   checkbox: {
     shortest: "",
@@ -30,12 +30,12 @@ export const trackerTypesLabels: Record<
   },
   liters: {
     shortest: "L",
-    short: "liters",
-    long: "Liters (L)",
+    short: "Volume (L)",
+    long: "Volume (L)",
   },
   steps: {
     shortest: "steps",
-    short: "steps",
+    short: "Steps",
     long: "Steps",
   },
   kilometers: {

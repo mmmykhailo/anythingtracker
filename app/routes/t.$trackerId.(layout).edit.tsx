@@ -239,7 +239,7 @@ export default function TrackerEditPage() {
           </div>
 
           <div className="grid items-center gap-3">
-            <Label htmlFor="trackerTypeTrigger">Measurement unit (type)</Label>
+            <Label htmlFor="trackerTypeTrigger">Type</Label>
             <Select
               required
               value={state.type}
@@ -257,7 +257,7 @@ export default function TrackerEditPage() {
                 id="trackerTypeTrigger"
                 className={!canChangeType ? "opacity-60" : ""}
               >
-                <SelectValue placeholder="Select measurement unit" />
+                <SelectValue placeholder="Select type" />
               </SelectTrigger>
               <SelectContent>
                 <SelectGroup>
