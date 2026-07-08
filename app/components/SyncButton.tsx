@@ -117,6 +117,13 @@ export function SyncButton() {
             isRevalidating ||
             syncState.status === "syncing"
           }
+          aria-label={
+            isRevalidating || syncState.status === "syncing"
+              ? "Syncing…"
+              : syncState.status === "error"
+              ? "Sync failed — click to retry"
+              : "Sync with cloud"
+          }
           className="h-8 w-8 transition-all relative"
         >
           {getIcon()}

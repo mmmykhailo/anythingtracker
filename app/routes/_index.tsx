@@ -199,12 +199,12 @@ export default function Home() {
     <div>
       <div className="w-full h-16 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <Button asChild variant="ghost" size="icon">
+          <Button asChild variant="ghost" size="icon" aria-label="Settings">
             <Link to="/settings" prefetch="viewport">
               <Gear className="h-4 w-4" weight="bold" />
             </Link>
           </Button>
-          <Button asChild variant="ghost" size="icon">
+          <Button asChild variant="ghost" size="icon" aria-label="Monthly recap">
             <Link to="/monthly-recap" prefetch="viewport">
               <ChartBar className="h-4 w-4" weight="duotone" />
             </Link>
