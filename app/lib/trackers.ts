@@ -30,12 +30,12 @@ export const trackerTypesLabels: Record<
   },
   liters: {
     shortest: "L",
-    short: "Volume (L)",
+    short: "liters",
     long: "Volume (L)",
   },
   steps: {
     shortest: "steps",
-    short: "Steps",
+    short: "steps",
     long: "Steps",
   },
   kilometers: {
@@ -50,7 +50,7 @@ export const trackerTypesLabels: Record<
   },
   hours: {
     shortest: "hr",
-    short: "hr",
+    short: "hours",
     long: "Hours",
   },
 };
