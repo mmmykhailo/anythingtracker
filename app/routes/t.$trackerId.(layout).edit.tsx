@@ -337,7 +337,7 @@ export default function TrackerEditPage() {
         <div className="flex gap-2">
           <Button type="submit" disabled={isSaving || isDeleting}>
             <FloppyDisk weight="bold" />
-            {isSaving ? "Saving..." : "FloppyDisk"}
+            {isSaving ? "Saving..." : "Save"}
           </Button>
         </div>
       </Form>

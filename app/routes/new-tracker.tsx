@@ -169,7 +169,7 @@ export default function NewTrackerPage() {
           </div>
           <Button type="submit" disabled={isSaving}>
             <FloppyDisk weight="bold" />
-            {isSaving ? "Saving..." : "FloppyDisk"}
+            {isSaving ? "Saving..." : "Save"}
           </Button>
         </div>
         <div className="flex flex-col py-6 gap-4">
