@@ -1,7 +1,8 @@
 import { addDays, format } from "date-fns";
 import { ChartBar, Check, CaretDown, CaretLeft, CaretRight, Tree, Plus, Gear } from "@phosphor-icons/react";
 import { useState, useEffect } from "react";
-import { Link, redirect, useLoaderData, useNavigate } from "react-router";
+import { Link, redirect, useLoaderData } from "react-router";
+import { LogEntryDrawer } from "~/components/LogEntryDrawer";
 import { Button } from "~/components/ui/button";
 import { Separator } from "~/components/ui/separator";
 import { formatDateForDisplay, getDaysArray, isDateToday } from "~/lib/dates";
@@ -60,7 +61,6 @@ export function meta() {
 export default function Home() {
   const { trackers, savedExpandedTrackers } =
     useLoaderData<typeof clientLoader>();
-  const navigate = useNavigate();
   const [currentLastDate, setCurrentLastDate] = useState(() => new Date());
   const [showHiddenTrackers, setShowHiddenTrackers] = useState(() =>
     getShowHiddenTrackers()
@@ -68,6 +68,21 @@ export default function Home() {
   const [expandedTrackers, setExpandedTrackers] = useState<Set<string>>(
     () => new Set(savedExpandedTrackers)
   );
+  const [drawerState, setDrawerState] = useState<{
+    open: boolean;
+    trackerId: string;
+    date: string;
+  }>({ open: false, trackerId: "", date: "" });
+
+  const openDrawer = (trackerId: string, date: string) => {
+    setDrawerState({ open: true, trackerId, date });
+    window.history.pushState(null, "", `/t/${trackerId}/log-entry?date=${date}`);
+  };
+
+  const closeDrawer = () => {
+    setDrawerState((prev) => ({ ...prev, open: false }));
+    window.history.replaceState(null, "", "/");
+  };
 
   // TODO: Investigate why this is necessary
   useEffect(() => {
@@ -347,7 +362,7 @@ export default function Home() {
                             )}
                           <button
                             type="button"
-                            onClick={() => navigate(`/t/${tracker.id}/log-entry?date=${dateString}`)}
+                            onClick={() => openDrawer(tracker.id, dateString)}
                             className="absolute inset-0 cursor-pointer"
                             aria-label={`Log entry for ${tracker.title}`}
                           />
@@ -372,6 +387,14 @@ export default function Home() {
         </div>
       )}
 
+      {drawerState.trackerId && (
+        <LogEntryDrawer
+          open={drawerState.open}
+          onClose={closeDrawer}
+          trackerId={drawerState.trackerId}
+          date={drawerState.date}
+        />
+      )}
     </div>
   );
 }
