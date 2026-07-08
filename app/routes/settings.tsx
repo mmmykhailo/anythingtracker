@@ -1,5 +1,11 @@
-import { CaretLeft, DownloadSimple, Upload, Gear as SettingsIcon, CheckCircle } from "@phosphor-icons/react";
-import { useRef, useState, useEffect } from "react";
+import {
+  CaretLeft,
+  DownloadSimple,
+  Upload,
+  Gear as SettingsIcon,
+  CheckCircle,
+} from "@phosphor-icons/react";
+import { useRef, useState } from "react";
 import {
   Link,
   useNavigation,
@@ -224,13 +230,16 @@ export default function SettingsPage() {
               >
                 {exportSuccess ? (
                   <>
-                    <CheckCircle className="h-4 w-4 mr-2 text-accent" weight="duotone" />
+                    <CheckCircle
+                      className="h-4 w-4 mr-2 text-accent"
+                      weight="duotone"
+                    />
                     Exported
                   </>
                 ) : (
                   <>
                     <DownloadSimple className="h-4 w-4 mr-2" weight="bold" />
-                    {isExporting ? "Downloading..." : "DownloadSimple my data"}
+                    {isExporting ? "Downloading..." : "Download my data"}
                   </>
                 )}
               </Button>
@@ -256,7 +265,10 @@ export default function SettingsPage() {
               >
                 {importSuccess ? (
                   <>
-                    <CheckCircle className="h-4 w-4 mr-2 text-accent" weight="duotone" />
+                    <CheckCircle
+                      className="h-4 w-4 mr-2 text-accent"
+                      weight="duotone"
+                    />
                     Imported
                   </>
                 ) : (
@@ -267,7 +279,7 @@ export default function SettingsPage() {
                 )}
               </Button>
               <div className="text-xs text-muted-foreground mt-2">
-                DownloadSimple creates a JSON file with all your trackers and history.
+                Download creates a JSON file with all your trackers and history.
                 Import might break existing data. Please backup your data before
                 importing.
                 <br />

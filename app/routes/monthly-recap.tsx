@@ -15,7 +15,15 @@ import {
   SelectTrigger,
   SelectValue,
 } from "~/components/ui/select";
-import { CaretLeft, DownloadSimple, CalendarBlank, Share, CalendarX, Copy, ChartBar } from "@phosphor-icons/react";
+import {
+  CaretLeft,
+  DownloadSimple,
+  CalendarBlank,
+  Share,
+  CalendarX,
+  Copy,
+  ChartBar,
+} from "@phosphor-icons/react";
 import clsx from "clsx";
 import {
   Empty,
@@ -783,7 +791,10 @@ export default function MonthlyRecap() {
                   </div>
 
                   <div className="text-center mt-4 text-white/50 text-xs flex gap-1">
-                    <ChartBar className="w-4 h-4 inline mr-1 mb-0.5" weight="duotone" />
+                    <ChartBar
+                      className="w-4 h-4 inline mr-1 mb-0.5"
+                      weight="duotone"
+                    />
                     Generated with tracker.mykhailo.net
                   </div>
                 </div>
@@ -818,7 +829,7 @@ export default function MonthlyRecap() {
               className="flex-1 bg-black/30 hover:bg-black/40 text-white border-0"
             >
               <DownloadSimple className="w-4 h-4 mr-2" weight="bold" />
-              DownloadSimple
+              Download
             </Button>
             {canShare ? (
               <Button

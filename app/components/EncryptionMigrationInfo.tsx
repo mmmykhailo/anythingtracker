@@ -18,7 +18,10 @@ export function EncryptionMigrationInfo({
     <Card className="border-yellow-200 dark:border-yellow-900 bg-yellow-50/50 dark:bg-yellow-950/20">
       <CardHeader>
         <CardTitle className="text-base flex items-center gap-2">
-          <Warning className="h-4 w-4 text-yellow-600 dark:text-yellow-400" weight="duotone" />
+          <Warning
+            className="h-4 w-4 text-yellow-600 dark:text-yellow-400"
+            weight="duotone"
+          />
           Encryption Migration Notice
         </CardTitle>
       </CardHeader>
@@ -40,7 +43,7 @@ export function EncryptionMigrationInfo({
               </ul>
               <p className="text-muted-foreground">
                 <Info className="inline h-3 w-3 mr-1" />
-                Tip: DownloadSimple a local backup before disabling encryption as a
+                Tip: Download a local backup before disabling encryption as a
                 safety measure.
               </p>
             </>
