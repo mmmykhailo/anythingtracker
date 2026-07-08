@@ -112,7 +112,7 @@ export async function clientAction({
       await updateTracker(updatedTracker);
       debouncedDataChange.dispatch("tracker_updated", { trackerId });
 
-      return redirect("/");
+      return redirect(`/t/${trackerId}/history`);
     }
 
     return { success: true };

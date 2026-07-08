@@ -77,7 +77,7 @@ export async function clientAction({ request }: ClientActionFunctionArgs) {
       trackerId: newTracker.id,
     });
 
-    return redirect("/");
+    return redirect(`/t/${newTracker.id}/history`);
   } catch (error) {
     console.error("Failed to create tracker:", error);
     return { error: { general: "Failed to create tracker" } };
