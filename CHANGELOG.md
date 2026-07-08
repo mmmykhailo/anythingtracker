@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.15] - 2026-07-08
+
+### Changes
+
+- wrap history date group when there's no enough space (66ee880)
+- fix labels broken after switching icons library (f7259b2)
+
+
 ## [1.0.14] - 2026-07-08
 
 ### Changes
