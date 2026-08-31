@@ -4,9 +4,36 @@ import { Drawer as DrawerPrimitive } from "vaul"
 import { cn } from "~/lib/utils"
 
 function Drawer({
+  open,
   ...props
 }: React.ComponentProps<typeof DrawerPrimitive.Root>) {
-  return <DrawerPrimitive.Root data-slot="drawer" {...props} />
+  const scrollPosition = React.useRef(0)
+
+  React.useLayoutEffect(() => {
+    if (!open || typeof window === "undefined") return
+
+    scrollPosition.current = window.scrollY
+    const previousStyles = {
+      position: document.body.style.position,
+      top: document.body.style.top,
+      left: document.body.style.left,
+      right: document.body.style.right,
+      width: document.body.style.width,
+    }
+
+    document.body.style.position = "fixed"
+    document.body.style.top = `-${scrollPosition.current}px`
+    document.body.style.left = "0"
+    document.body.style.right = "0"
+    document.body.style.width = "100%"
+
+    return () => {
+      Object.assign(document.body.style, previousStyles)
+      window.scrollTo(0, scrollPosition.current)
+    }
+  }, [open])
+
+  return <DrawerPrimitive.Root data-slot="drawer" open={open} {...props} />
 }
 
 function DrawerTrigger({
@@ -56,7 +83,7 @@ function DrawerContent({
         className={cn(
           "group/drawer-content fixed z-50 flex h-auto flex-col bg-background outline-none",
           "data-[vaul-drawer-direction=top]:inset-x-0 data-[vaul-drawer-direction=top]:top-0 data-[vaul-drawer-direction=top]:mb-24 data-[vaul-drawer-direction=top]:max-h-[80vh] data-[vaul-drawer-direction=top]:rounded-b-lg data-[vaul-drawer-direction=top]:border-b",
-          "data-[vaul-drawer-direction=bottom]:inset-x-0 data-[vaul-drawer-direction=bottom]:bottom-0 data-[vaul-drawer-direction=bottom]:h-[75vh] data-[vaul-drawer-direction=bottom]:rounded-t-lg data-[vaul-drawer-direction=bottom]:border-t",
+          "data-[vaul-drawer-direction=bottom]:inset-x-0 data-[vaul-drawer-direction=bottom]:bottom-0 data-[vaul-drawer-direction=bottom]:h-[55vh] data-[vaul-drawer-direction=bottom]:rounded-t-lg data-[vaul-drawer-direction=bottom]:border-t",
           "data-[vaul-drawer-direction=right]:inset-y-0 data-[vaul-drawer-direction=right]:right-0 data-[vaul-drawer-direction=right]:w-3/4 data-[vaul-drawer-direction=right]:border-l data-[vaul-drawer-direction=right]:sm:max-w-sm",
           "data-[vaul-drawer-direction=left]:inset-y-0 data-[vaul-drawer-direction=left]:left-0 data-[vaul-drawer-direction=left]:w-3/4 data-[vaul-drawer-direction=left]:border-r data-[vaul-drawer-direction=left]:sm:max-w-sm",
           className
