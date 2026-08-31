@@ -136,6 +136,7 @@ export function LogEntryDrawer({
         if (!isOpen) onClose();
       }}
       direction={direction}
+      repositionInputs={false}
     >
       <DrawerContent>
         <DrawerHeader className="border-b border-border">
