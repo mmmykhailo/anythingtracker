@@ -4,9 +4,9 @@ import {
   Drawer,
   DrawerContent,
   DrawerHeader,
+  DrawerScroll,
   DrawerTitle,
-} from "~/components/ui/drawer";
-import { ScrollArea } from "~/components/ui/scroll-area";
+} from "~/components/ui/silk-drawer";
 import { EntryInput } from "~/components/tracker/EntryInput";
 import { TrackerHistory } from "~/components/tracker/TrackerHistory";
 import { Separator } from "~/components/ui/separator";
@@ -153,7 +153,7 @@ export function LogEntryDrawer({
           </div>
         </DrawerHeader>
 
-        <ScrollArea className="flex-1 overflow-auto">
+        <DrawerScroll>
           <div className="p-4 flex flex-col gap-6">
             {loading || !data ? (
               <div className="text-sm text-muted-foreground py-8 text-center">
@@ -187,7 +187,7 @@ export function LogEntryDrawer({
               </>
             )}
           </div>
-        </ScrollArea>
+        </DrawerScroll>
       </DrawerContent>
     </Drawer>
   );
