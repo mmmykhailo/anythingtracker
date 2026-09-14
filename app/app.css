@@ -1,5 +1,8 @@
+@layer silk-defaults, theme, base, components, utilities;
+
 @import "tailwindcss";
 @import "tw-animate-css";
+@import "@silk-hq/components/layered-styles.css";
 
 
 @theme {
